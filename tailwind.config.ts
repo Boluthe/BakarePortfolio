@@ -14,9 +14,9 @@ const config: Config = {
       },
       colors: {
         surface: {
-          DEFAULT: "#0f172a",
-          subtle: "#1e293b",
-          muted: "#334155",
+          DEFAULT: "#0d0b1f",
+          subtle: "#15122e",
+          muted: "#1e1a3a",
         },
         accent: {
           DEFAULT: "#f97316",
