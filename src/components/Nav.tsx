@@ -20,6 +20,14 @@ export default function Nav() {
             Contact
           </Link>
           <a
+            href="https://linkedin.com/in/bakare-tioluwani-96a135261"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition-colors"
+          >
+            LinkedIn
+          </a>
+          <a
             href="https://github.com/boluthe"
             target="_blank"
             rel="noopener noreferrer"
