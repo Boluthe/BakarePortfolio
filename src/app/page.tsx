@@ -1,149 +1,189 @@
+import Image from "next/image";
 import Nav from "@/components/Nav";
-import CaseStudyCard from "@/components/CaseStudyCard";
 import RevealSection from "@/components/RevealSection";
 import { caseStudies } from "@/data/caseStudies";
+import Link from "next/link";
+
+const statusColors = {
+  Live:        "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
+  MVP:         "text-blue-400   bg-blue-500/10   border-blue-500/20",
+  "In Progress":"text-amber-400  bg-amber-500/10  border-amber-500/20",
+} as const;
 
 export default function HomePage() {
   return (
     <>
       <Nav />
 
-      <main className="mx-auto max-w-5xl px-6">
-        {/* Hero */}
-        <section className="relative flex min-h-screen flex-col justify-center overflow-hidden pb-24 pt-32">
+      {/* ── Hero ── */}
+      <section className="mx-auto max-w-5xl px-6">
+        <div className="grid min-h-screen items-center gap-12 pb-16 pt-28 lg:grid-cols-[1fr_300px] lg:gap-20">
 
-          {/* Background glow */}
-          <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-            <div className="absolute -top-32 right-0 h-[500px] w-[500px] rounded-full bg-orange-500 opacity-[0.06] blur-3xl" />
-            <div className="absolute bottom-0 -left-40 h-80 w-80 rounded-full bg-blue-600 opacity-[0.04] blur-3xl" />
-          </div>
-
-          <div className="relative max-w-3xl">
-            {/* Pulsing "available" badge */}
-            <p className="anim-fade-up delay-1 mb-4 flex items-center gap-2.5 text-sm font-medium uppercase tracking-widest text-accent">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-              </span>
-              Available for work
+          {/* Text — left */}
+          <div className="order-2 lg:order-1">
+            <p className="anim-fade-up delay-1 mb-6 text-xs font-semibold uppercase tracking-[0.18em] text-orange-400">
+              Open to work · Lagos, Nigeria
             </p>
 
-            <h1 className="anim-fade-up delay-2 mb-6 text-5xl font-bold leading-tight tracking-tight text-white sm:text-6xl">
-              Tioluwani Bakare
+            <h1 className="anim-fade-up delay-2 text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
+              Tioluwani<br />Bakare
             </h1>
 
-            <p className="anim-fade-up delay-3 mb-4 text-xl text-slate-300 sm:text-2xl">
-              Fullstack Engineer — backend focus
+            <p className="anim-fade-up delay-3 mt-5 text-xl font-light text-slate-400">
+              Fullstack Engineer
             </p>
 
-            <p className="anim-fade-up delay-4 mb-10 max-w-xl text-base text-slate-400 leading-relaxed">
-              I build production-grade backends with Java/Spring Boot and clean
-              React/TypeScript frontends. Based in Lagos, Nigeria. I work with
-              founders and teams who need things that actually ship.
+            <p className="anim-fade-up delay-4 mt-6 max-w-md text-[15px] leading-relaxed text-slate-400">
+              Backend engineer by focus. I write Spring Boot APIs that hold up
+              under pressure, and React/TypeScript frontends that ship on
+              schedule. Six years of production software across e-commerce,
+              SaaS, and enterprise procurement.
             </p>
 
-            <div className="anim-fade-up delay-5 flex flex-wrap items-center gap-3">
+            <div className="anim-fade-up delay-5 mt-8 flex flex-wrap items-center gap-3">
               <a
                 href="#work"
-                className="inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:bg-accent-hover hover:shadow-lg hover:shadow-orange-500/20"
+                className="rounded-lg bg-orange-500 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/25"
               >
-                See my work
+                View work
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 rounded-lg border border-slate-700 px-5 py-2.5 text-sm font-semibold text-slate-300 transition-colors hover:border-slate-500 hover:text-white"
+                className="rounded-lg border border-slate-700 px-5 py-2.5 text-sm font-semibold text-slate-300 transition-colors hover:border-slate-500 hover:text-white"
               >
                 Get in touch
               </a>
             </div>
 
-            <div className="anim-fade-up delay-6 mt-14 flex flex-wrap gap-8 text-sm text-slate-500">
-              {[
-                "Java / Spring Boot",
-                "React / TypeScript",
-                "PostgreSQL",
-                "Node.js",
-                "REST APIs",
-                "Lagos, Nigeria",
-              ].map((item) => (
-                <span key={item} className="flex items-center gap-2">
-                  <span className="h-1 w-1 rounded-full bg-accent" />
-                  {item}
-                </span>
-              ))}
+            <p className="anim-fade-up delay-6 mt-10 text-[13px] tracking-wide text-slate-700">
+              Java&nbsp;&nbsp;·&nbsp;&nbsp;Spring Boot&nbsp;&nbsp;·&nbsp;&nbsp;React&nbsp;&nbsp;·&nbsp;&nbsp;TypeScript&nbsp;&nbsp;·&nbsp;&nbsp;PostgreSQL&nbsp;&nbsp;·&nbsp;&nbsp;Node.js
+            </p>
+          </div>
+
+          {/* Photo — right */}
+          <div className="anim-fade-up delay-2 order-1 flex justify-center lg:order-2 lg:justify-end">
+            <div className="relative">
+              <div className="relative w-56 overflow-hidden rounded-2xl bg-slate-100 shadow-2xl shadow-black/50 ring-1 ring-white/10 sm:w-64 lg:w-72">
+                <Image
+                  src="/profile.jpg"
+                  alt="Tioluwani Bakare"
+                  width={320}
+                  height={400}
+                  className="h-auto w-full object-cover object-top"
+                  priority
+                />
+              </div>
+              {/* Subtle glow behind photo */}
+              <div className="absolute -inset-4 -z-10 rounded-3xl bg-orange-500/10 blur-2xl" />
             </div>
           </div>
-        </section>
 
-        {/* Case Studies */}
-        <section id="work" className="pb-32 scroll-mt-20">
-          <RevealSection className="mb-12">
-            <h2 className="mb-3 text-3xl font-bold text-white">Selected Work</h2>
-            <p className="text-slate-400">
-              Three projects — a restaurant platform, a SaaS product, and a
-              professional services engagement.
-            </p>
+        </div>
+      </section>
+
+      {/* ── Work ── */}
+      <section id="work" className="border-t border-white/[0.06] scroll-mt-20">
+        <div className="mx-auto max-w-5xl px-6 py-24">
+
+          <RevealSection>
+            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+              Selected work
+            </h2>
           </RevealSection>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 divide-y divide-white/[0.05]">
             {caseStudies.map((cs, i) => (
-              <RevealSection key={cs.slug} style={{ transitionDelay: `${i * 100}ms` } as React.CSSProperties}>
-                <CaseStudyCard cs={cs} />
+              <RevealSection
+                key={cs.slug}
+                style={{ transitionDelay: `${i * 80}ms` } as React.CSSProperties}
+              >
+                <Link
+                  href={`/case-studies/${cs.slug}`}
+                  className="group flex items-start gap-6 py-8 transition-colors"
+                >
+                  <span className="mt-1 w-6 shrink-0 font-mono text-xs text-slate-700">
+                    0{i + 1}
+                  </span>
+
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                      <h3 className="text-lg font-semibold text-white transition-colors group-hover:text-orange-400">
+                        {cs.title}
+                      </h3>
+                      <span className="shrink-0 text-xs text-slate-600">
+                        {cs.stack.slice(0, 3).join(" · ")}
+                      </span>
+                    </div>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-500">
+                      {cs.problem}
+                    </p>
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-xs text-orange-400">
+                      Read case study
+                      <svg
+                        className="h-3 w-3 transition-transform group-hover:translate-x-0.5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </span>
+                  </div>
+
+                  <span
+                    className={`mt-1 shrink-0 rounded-full border px-2.5 py-0.5 text-xs font-medium ${statusColors[cs.status]}`}
+                  >
+                    {cs.status}
+                  </span>
+                </Link>
               </RevealSection>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Contact */}
-        <section id="contact" className="pb-32 scroll-mt-20">
+      {/* ── Contact ── */}
+      <section id="contact" className="border-t border-white/[0.06] scroll-mt-20">
+        <div className="mx-auto max-w-5xl px-6 py-24">
           <RevealSection>
-            <div className="rounded-2xl border border-slate-800 bg-surface-subtle p-10">
-              <h2 className="mb-3 text-3xl font-bold text-white">
-                Let&apos;s work together
-              </h2>
-              <p className="mb-8 max-w-xl text-slate-400 leading-relaxed">
-                If you&apos;re building something that needs a reliable backend
-                engineer or a fullstack developer who can ship end-to-end, reach
-                out. Tell me what problem you&apos;re solving.
-              </p>
-              <a
-                href="mailto:bakaretioluwani@icloud.com?subject=Let's work together&body=Hi Tioluwani,%0A%0AWhat I'm building:%0A%0AWhat I need help with:%0A%0ATimeline:%0A"
-                className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-accent-hover hover:shadow-lg hover:shadow-orange-500/20"
-              >
-                Send me a message
-                <svg
-                  className="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
+            <div className="grid gap-10 lg:grid-cols-2 lg:items-end">
+              <div>
+                <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                  Contact
+                </h2>
+                <p className="mt-6 text-4xl font-bold leading-tight tracking-tight text-white">
+                  Available for<br />engineering work.
+                </p>
+              </div>
+              <div className="space-y-4">
+                <p className="text-sm text-slate-500">
+                  Contract, freelance, or full-time. Remote or Lagos-based.
+                </p>
+                <a
+                  href="mailto:bakaretioluwani@icloud.com"
+                  className="block text-lg font-medium text-orange-400 transition-colors hover:text-orange-300"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-              </a>
-              <p className="mt-4 text-xs text-slate-600">
-                Or email directly: bakaretioluwani@icloud.com
-              </p>
+                  bakaretioluwani@icloud.com
+                </a>
+                <a
+                  href="https://github.com/boluthe"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-sm text-slate-500 transition-colors hover:text-slate-300"
+                >
+                  github.com/boluthe
+                </a>
+              </div>
             </div>
           </RevealSection>
-        </section>
-      </main>
+        </div>
+      </section>
 
-      <footer className="border-t border-slate-800 px-6 py-8">
-        <div className="mx-auto flex max-w-5xl items-center justify-between text-xs text-slate-600">
-          <span>© 2024 Tioluwani Bakare</span>
-          <a
-            href="https://github.com/boluthe"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-slate-400 transition-colors"
-          >
-            GitHub
-          </a>
+      <footer className="border-t border-white/[0.06] px-6 py-8">
+        <div className="mx-auto flex max-w-5xl items-center justify-between text-xs text-slate-700">
+          <span>Tioluwani Bakare</span>
+          <span>Lagos, Nigeria</span>
         </div>
       </footer>
     </>
