@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - gh-pages
       - claude/portfolio-case-studies-u4cmx3
   workflow_dispatch:
 
