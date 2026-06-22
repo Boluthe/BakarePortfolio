@@ -106,7 +106,7 @@ export default function CaseStudyPage({
                   href={cs.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white hover:bg-accent-hover transition-colors"
+                  className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-500-hover transition-colors"
                 >
                   <svg
                     className="h-4 w-4"
@@ -163,7 +163,7 @@ export default function CaseStudyPage({
           </Link>
           <a
             href="mailto:bakaretioluwani@icloud.com"
-            className="text-sm text-accent hover:text-accent-hover transition-colors"
+            className="text-sm text-emerald-400 hover:text-emerald-400-hover transition-colors"
           >
             Discuss a project →
           </a>

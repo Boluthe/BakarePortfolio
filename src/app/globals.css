@@ -8,22 +8,19 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #0d0b1f;
+  background-color: #060e1a;
 }
 
 body {
-  background-color: #0d0b1f;
-  background-image:
-    radial-gradient(ellipse 70% 50% at 10% 0%,   rgba(109, 40, 217, 0.18) 0%, transparent 100%),
-    radial-gradient(ellipse 60% 40% at 90% 100%,  rgba(249, 115, 22, 0.09) 0%, transparent 100%);
+  background-color: #060e1a;
   color: #f1f5f9;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background-color: #f97316;
-  color: #0d0b1f;
+  background-color: #10b981;
+  color: #060e1a;
 }
 
 @keyframes fadeUp {

@@ -14,13 +14,13 @@ const config: Config = {
       },
       colors: {
         surface: {
-          DEFAULT: "#0d0b1f",
-          subtle: "#15122e",
-          muted: "#1e1a3a",
+          DEFAULT: "#060e1a",
+          subtle: "#0d1a2e",
+          muted: "#162337",
         },
         accent: {
-          DEFAULT: "#f97316",
-          hover: "#ea6c0a",
+          DEFAULT: "#10b981",
+          hover: "#059669",
         },
       },
     },
