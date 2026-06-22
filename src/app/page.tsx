@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Nav from "@/components/Nav";
 import RevealSection from "@/components/RevealSection";
 import { caseStudies } from "@/data/caseStudies";
@@ -77,13 +78,13 @@ export default function HomePage() {
             <div className="relative">
               <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-emerald-500/25 via-transparent to-sky-500/15" />
               <div className="relative w-56 overflow-hidden rounded-2xl bg-slate-100 shadow-2xl shadow-black/60 sm:w-64 lg:w-72">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/profile.jpg`}
+                <Image
+                  src="/profile.jpg"
                   alt="Tioluwani Bakare"
                   width={320}
                   height={400}
                   className="h-auto w-full object-cover object-top"
+                  priority
                 />
               </div>
               <div className="absolute -inset-6 -z-10 rounded-3xl bg-emerald-500/8 blur-2xl" />
