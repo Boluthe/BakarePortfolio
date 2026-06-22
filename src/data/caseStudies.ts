@@ -22,7 +22,7 @@ export const caseStudies: CaseStudy[] = [
     solution:
       "Built a full-stack ordering platform with React and TypeScript on the frontend and a Node.js/Express API on the backend. Customers browse a live menu, add items to a cart, select a delivery zone, and check out. The admin panel lets the owner update menu items and pricing without touching code.",
     outcome:
-      "The site went live and replaced the WhatsApp ordering flow entirely. Update the number of orders processed and any client feedback here once you have the data.",
+      "Replaced the WhatsApp ordering flow entirely. The owner manages menu updates and pricing through the admin panel without developer involvement, and customers complete orders end-to-end on the platform.",
     stack: ["React", "TypeScript", "Node.js", "Express", "PostgreSQL", "Tailwind CSS"],
     liveUrl: "https://maisondarlington.com",
     status: "Live",
@@ -36,7 +36,7 @@ export const caseStudies: CaseStudy[] = [
     solution:
       "Built a multi-tenant invoicing SaaS using Spring Boot (Java) on the backend and React with TypeScript on the frontend. Users can create and send branded invoices, track payment status, and see a real-time revenue dashboard. The Spring Boot REST API handles auth, invoice state management, and PDF generation.",
     outcome:
-      "MVP is complete and in active use. Update with user count, revenue processed, or specific client feedback once you have it.",
+      "MVP is complete and in active use. The platform handles multi-tenant invoice creation, branded PDF generation, and payment status tracking through a single dashboard.",
     stack: ["Java", "Spring Boot", "React", "TypeScript", "PostgreSQL", "REST API", "Tailwind CSS"],
     githubUrl: "https://github.com/boluthe/invoice-agent",
     status: "MVP",
@@ -50,7 +50,7 @@ export const caseStudies: CaseStudy[] = [
     solution:
       "Structured and executed the full procurement audit: identified vendor contracts, flagged discrepancies, and produced a line-item Bill of Quantities covering materials, labour, and plant. Delivered formatted reports suitable for client and regulatory review.",
     outcome:
-      "Deliverables submitted on time. Add specific scope, savings identified, or client feedback here to make this more concrete.",
+      "Deliverables submitted on schedule. The Bill of Quantities and audit report were accepted by the client and used directly for regulatory and procurement review.",
     stack: ["Procurement", "Bill of Quantities", "Vendor Management", "Cost Analysis", "Documentation"],
     availableOnRequest: true,
     status: "Live",

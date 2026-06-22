@@ -101,7 +101,7 @@ export default function HomePage() {
                   href={`/case-studies/${cs.slug}`}
                   className="group flex items-start gap-6 py-8 transition-colors"
                 >
-                  <span className="mt-1 w-6 shrink-0 font-mono text-xs text-slate-700">
+                  <span className="mt-1 w-6 shrink-0 font-mono text-xs text-slate-500">
                     0{i + 1}
                   </span>
 
@@ -181,8 +181,8 @@ export default function HomePage() {
       </section>
 
       <footer className="border-t border-white/[0.06] px-6 py-8">
-        <div className="mx-auto flex max-w-5xl items-center justify-between text-xs text-slate-700">
-          <span>Tioluwani Bakare</span>
+        <div className="mx-auto flex max-w-5xl items-center justify-between text-xs text-slate-600">
+          <span>© 2026 Tioluwani Bakare</span>
           <span>Lagos, Nigeria</span>
         </div>
       </footer>

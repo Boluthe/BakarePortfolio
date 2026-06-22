@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Tioluwani Bakare — Fullstack Engineer",
@@ -19,8 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="min-h-screen bg-surface text-slate-100 font-sans">
+    <html lang="en" className={inter.variable}>
+      <body className="min-h-screen text-slate-100 font-sans">
         {children}
       </body>
     </html>

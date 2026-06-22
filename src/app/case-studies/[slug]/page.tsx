@@ -170,16 +170,16 @@ export default function CaseStudyPage({
         </div>
       </main>
 
-      <footer className="border-t border-slate-800 px-6 py-8">
+      <footer className="border-t border-white/[0.06] px-6 py-8">
         <div className="mx-auto flex max-w-5xl items-center justify-between text-xs text-slate-600">
-          <span>© 2024 Tioluwani Bakare</span>
+          <span>© 2026 Tioluwani Bakare</span>
           <a
             href="https://github.com/boluthe"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-slate-400 transition-colors"
           >
-            GitHub
+            Lagos, Nigeria
           </a>
         </div>
       </footer>
