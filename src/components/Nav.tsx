@@ -8,7 +8,7 @@ export default function Nav() {
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         <Link
           href="/"
-          className="text-sm font-semibold tracking-tight text-white hover:text-orange-400 transition-colors"
+          className="text-sm font-semibold tracking-tight text-white hover:text-emerald-400 transition-colors"
         >
           Tioluwani Bakare
         </Link>

@@ -9,13 +9,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Tioluwani Bakare — Fullstack Engineer",
+  title: "Tioluwani Bakare — Full Stack Engineer",
   description:
-    "Fullstack engineer specialising in Java/Spring Boot backends and React/TypeScript frontends. Based in Lagos, Nigeria.",
+    "Full stack engineer building Java/Spring Boot backends and React/TypeScript frontends. Banking production experience at Union Bank of Nigeria. Based in Lagos.",
   openGraph: {
-    title: "Tioluwani Bakare — Fullstack Engineer",
+    title: "Tioluwani Bakare — Full Stack Engineer",
     description:
-      "Fullstack engineer specialising in Java/Spring Boot backends and React/TypeScript frontends. Based in Lagos, Nigeria.",
+      "Full stack engineer building Java/Spring Boot backends and React/TypeScript frontends. Banking production experience at Union Bank of Nigeria. Based in Lagos.",
     type: "website",
   },
 };
