@@ -11,7 +11,7 @@ export default function CaseStudyCard({ cs }: { cs: CaseStudy }) {
   return (
     <Link
       href={`/case-studies/${cs.slug}`}
-      className="group flex flex-col gap-4 rounded-xl border border-slate-800 bg-surface-subtle p-6 transition-all duration-200 hover:border-slate-600 hover:bg-surface-muted/30"
+      className="group flex flex-col gap-4 rounded-xl border border-slate-800 bg-surface-subtle p-6 transition-all duration-300 hover:-translate-y-1 hover:border-slate-600 hover:bg-surface-muted/30 hover:shadow-xl hover:shadow-black/40"
     >
       <div className="flex items-start justify-between gap-4">
         <h3 className="text-lg font-semibold text-white group-hover:text-accent transition-colors">
