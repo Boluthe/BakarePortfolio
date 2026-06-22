@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Nav from "@/components/Nav";
 import RevealSection from "@/components/RevealSection";
 import { caseStudies } from "@/data/caseStudies";
@@ -64,13 +63,13 @@ export default function HomePage() {
           <div className="anim-fade-up delay-2 order-1 flex justify-center lg:order-2 lg:justify-end">
             <div className="relative">
               <div className="relative w-56 overflow-hidden rounded-2xl bg-slate-100 shadow-2xl shadow-black/50 ring-1 ring-white/10 sm:w-64 lg:w-72">
-                <Image
-                  src="/profile.jpg"
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/profile.jpg`}
                   alt="Tioluwani Bakare"
                   width={320}
                   height={400}
                   className="h-auto w-full object-cover object-top"
-                  priority
                 />
               </div>
               {/* Subtle glow behind photo */}
