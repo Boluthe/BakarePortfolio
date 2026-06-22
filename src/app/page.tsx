@@ -54,11 +54,9 @@ export default function HomePage() {
 
             {/* Stats + certifications */}
             <div className="anim-fade-up delay-5 mt-6 space-y-3">
-              <div className="flex flex-wrap gap-x-5 gap-y-1 text-xs text-slate-600">
-                <span>4 projects shipped</span>
-                <span>·</span>
-                <span>2+ yrs production experience</span>
-              </div>
+              <p className="text-xs text-slate-600">
+                4 projects shipped · 2+ yrs production experience
+              </p>
               <div className="flex flex-wrap gap-2">
                 {certs.map((c) => (
                   <span
@@ -79,7 +77,7 @@ export default function HomePage() {
               <div className="flex flex-wrap items-center gap-3">
                 <a
                   href="#work"
-                  className="rounded-lg bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-500/25"
+                  className="inline-flex items-center rounded-lg bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-500/25"
                 >
                   View work
                 </a>
@@ -99,14 +97,17 @@ export default function HomePage() {
                 href="/cv.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-slate-600 hover:text-slate-400 transition-colors"
+                className="inline-flex items-center gap-1 text-xs text-slate-500 underline underline-offset-4 decoration-slate-700 hover:text-slate-300 hover:decoration-slate-500 transition-colors"
               >
-                Download CV →
+                Download CV
+                <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
               </a>
             </div>
 
             {/* Skills grouped by category */}
-            <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-5">
+            <div className="mt-10 grid grid-cols-1 gap-y-5 sm:grid-cols-2 sm:gap-x-8">
               {skills.map(({ label, items }) => (
                 <div key={label}>
                   <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-600">
