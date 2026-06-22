@@ -4,16 +4,23 @@ import RevealSection from "@/components/RevealSection";
 import { caseStudies } from "@/data/caseStudies";
 import Link from "next/link";
 
+const WA_LINK =
+  "https://wa.me/2349154604723?text=Hi%20Tioluwani%2C%20I%20came%20across%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project%20with%20you.";
+
 const statusColors = {
-  Live:         "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
-  MVP:          "text-sky-400    bg-sky-500/10    border-sky-500/20",
-  "In Progress":"text-amber-400  bg-amber-500/10  border-amber-500/20",
+  Live:          "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
+  MVP:           "text-sky-400    bg-sky-500/10    border-sky-500/20",
+  "In Progress": "text-amber-400  bg-amber-500/10  border-amber-500/20",
 } as const;
 
-const techStack = [
-  "Java", "Spring Boot", "Spring Security",
-  "React", "TypeScript", "PostgreSQL", "Docker",
+const skills = [
+  { label: "Backend",  items: ["Java 17", "Spring Boot", "Spring Security", "REST APIs"] },
+  { label: "Frontend", items: ["React", "TypeScript", "Tailwind CSS"] },
+  { label: "DevOps",   items: ["Docker", "Jenkins", "Terraform"] },
+  { label: "Data",     items: ["PostgreSQL", "Prometheus", "ELK Stack"] },
 ];
+
+const certs = ["Oracle OCA — Java SE 8", "Oracle OCP — Java SE 8"];
 
 export default function HomePage() {
   return (
@@ -42,33 +49,80 @@ export default function HomePage() {
               Production experience at Union Bank of Nigeria and across SaaS,
               e-commerce, and AI-assisted platforms. I build Spring Boot backends
               and React frontends — from internal banking APIs and AI-powered
-              invoice automation to live consumer products. Oracle-certified
-              (OCA &amp; OCP, Java SE 8).
+              invoice automation to live consumer products.
             </p>
 
-            <div className="anim-fade-up delay-5 mt-8 flex flex-wrap items-center gap-3">
+            {/* Stats + certifications */}
+            <div className="anim-fade-up delay-5 mt-6 space-y-3">
+              <div className="flex flex-wrap gap-x-5 gap-y-1 text-xs text-slate-600">
+                <span>4 projects shipped</span>
+                <span>·</span>
+                <span>2+ yrs production experience</span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {certs.map((c) => (
+                  <span
+                    key={c}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 px-3 py-0.5 text-xs text-amber-400"
+                  >
+                    <svg className="h-3 w-3 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    {c}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* CTAs */}
+            <div className="anim-fade-up delay-6 mt-8 space-y-3">
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href="#work"
+                  className="rounded-lg bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-500/25"
+                >
+                  View work
+                </a>
+                <a
+                  href={WA_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-5 py-2.5 text-sm font-semibold text-emerald-300 transition-all hover:bg-emerald-500/20 hover:border-emerald-400/50"
+                >
+                  <svg className="h-4 w-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  Discuss a project
+                </a>
+              </div>
               <a
-                href="#work"
-                className="rounded-lg bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-500/25"
+                href="/cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-slate-600 hover:text-slate-400 transition-colors"
               >
-                View work
-              </a>
-              <a
-                href="#contact"
-                className="rounded-lg border border-sky-500/30 bg-sky-500/10 px-5 py-2.5 text-sm font-semibold text-sky-300 transition-all hover:bg-sky-500/20 hover:border-sky-400/50"
-              >
-                Get in touch
+                Download CV →
               </a>
             </div>
 
-            <div className="anim-fade-up delay-6 mt-10 flex flex-wrap gap-2">
-              {techStack.map((label) => (
-                <span
-                  key={label}
-                  className="rounded-md border border-slate-700/60 bg-slate-800/50 px-2.5 py-1 text-xs text-slate-400"
-                >
-                  {label}
-                </span>
+            {/* Skills grouped by category */}
+            <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-5">
+              {skills.map(({ label, items }) => (
+                <div key={label}>
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-600">
+                    {label}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {items.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-md border border-slate-700/60 bg-slate-800/50 px-2.5 py-1 text-xs text-slate-400"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </div>
@@ -132,21 +186,13 @@ export default function HomePage() {
                     </p>
                     <span className="mt-4 inline-flex items-center gap-1.5 text-xs text-emerald-400 opacity-0 transition-opacity group-hover:opacity-100">
                       Read case study
-                      <svg
-                        className="h-3 w-3 transition-transform group-hover:translate-x-0.5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
+                      <svg className="h-3 w-3 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                       </svg>
                     </span>
                   </div>
 
-                  <span
-                    className={`mt-1 shrink-0 rounded-full border px-2.5 py-0.5 text-xs font-medium ${statusColors[cs.status]}`}
-                  >
+                  <span className={`mt-1 shrink-0 rounded-full border px-2.5 py-0.5 text-xs font-medium ${statusColors[cs.status]}`}>
                     {cs.status}
                   </span>
                 </Link>
@@ -174,6 +220,27 @@ export default function HomePage() {
               </div>
 
               <div className="grid gap-3">
+                {/* WhatsApp */}
+                <a
+                  href={WA_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-4 rounded-xl border border-slate-800 bg-slate-800/30 px-5 py-4 transition-all hover:border-emerald-500/30 hover:bg-emerald-500/5"
+                >
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-400 ring-1 ring-emerald-500/20">
+                    <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    </svg>
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs text-slate-500">WhatsApp</p>
+                    <p className="text-sm font-medium text-white">+234 915 460 4723</p>
+                  </div>
+                  <svg className="ml-auto h-4 w-4 shrink-0 text-slate-600 transition-all group-hover:translate-x-0.5 group-hover:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+
                 {/* Email */}
                 <a
                   href="mailto:bakaretioluwani@icloud.com"

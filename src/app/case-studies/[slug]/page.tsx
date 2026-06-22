@@ -162,8 +162,10 @@ export default function CaseStudyPage({
             ← All work
           </Link>
           <a
-            href="mailto:bakaretioluwani@icloud.com"
-            className="text-sm text-emerald-400 hover:text-emerald-400-hover transition-colors"
+            href="https://wa.me/2349154604723?text=Hi%20Tioluwani%2C%20I%20came%20across%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project%20with%20you."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-emerald-400 hover:text-emerald-300 transition-colors"
           >
             Discuss a project →
           </a>
