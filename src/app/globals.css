@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #000000;
+}
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: #ef4444;
+  color: #000000;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.anim-fade-up {
+  opacity: 0;
+  animation: fadeUp 0.5s ease forwards;
+}
+
+.delay-1 { animation-delay: 60ms; }
+.delay-2 { animation-delay: 140ms; }
+.delay-3 { animation-delay: 220ms; }
+.delay-4 { animation-delay: 320ms; }
+.delay-5 { animation-delay: 420ms; }
+.delay-6 { animation-delay: 540ms; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Systems Architecture Dot Grid & Mesh Backgrounds */
+.bg-dot-grid {
+  background-image: radial-gradient(rgba(239, 68, 68, 0.06) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+}
+
+.bg-mesh-lines {
+  background-size: 80px 80px;
+  background-image: 
+    linear-gradient(to right, rgba(239, 68, 68, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(239, 68, 68, 0.02) 1px, transparent 1px);
+}
+
+
