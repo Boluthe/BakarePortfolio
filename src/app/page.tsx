@@ -34,11 +34,11 @@ const certs = [
 ];
 
 const endpoints: Record<string, { method: "GET" | "POST" | "PUT"; route: string }> = {
+  "maison-darlington": { method: "GET", route: "/api/v1/brand/menu" },
   "invoice-agent": { method: "POST", route: "/api/v1/invoice/escalate" },
   "cmr-system": { method: "GET", route: "/api/v1/bank/reporting" },
   "inventory-management": { method: "PUT", route: "/api/v1/stock/reconcile" },
   "rencash": { method: "POST", route: "/api/v1/loans/apply" },
-  "maison-darlington": { method: "GET", route: "/api/v1/brand/menu" },
 };
 
 const methodColors = {
