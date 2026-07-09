@@ -43,7 +43,7 @@ export default function BootLoader({ onComplete }: { onComplete: () => void }) {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex flex-col justify-between bg-black p-6 font-mono text-xs sm:text-sm text-slate-400 selection:bg-red-600 selection:text-black transition-opacity duration-500 ease-in-out ${
+      className={`fixed inset-0 z-50 flex flex-col justify-between bg-[#262a33] p-6 font-mono text-xs sm:text-sm text-slate-200 selection:bg-red-500 selection:text-white transition-opacity duration-500 ease-in-out ${
         fade ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >

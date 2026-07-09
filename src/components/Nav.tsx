@@ -4,44 +4,71 @@ import { useState } from "react";
 import Link from "next/link";
 
 const links = [
-  { label: "Work",     href: "/#work",                                             external: false },
-  { label: "Contact",  href: "/#contact",                                          external: false },
+  { label: "Work", href: "/#work", external: false },
+  { label: "Contact", href: "/#contact", external: false },
   { label: "LinkedIn", href: "https://linkedin.com/in/bakare-tioluwani-96a135261", external: true },
-  { label: "GitHub",   href: "https://github.com/boluthe",                         external: true },
+  { label: "GitHub", href: "https://github.com/boluthe", external: true },
 ];
+
+function NavItem({
+  label,
+  href,
+  external,
+  onClick,
+  className = "",
+}: {
+  label: string;
+  href: string;
+  external: boolean;
+  onClick?: () => void;
+  className?: string;
+}) {
+  const baseClasses = `transition-all duration-200 hover:text-red-400 font-medium ${className}`;
+  if (external) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={baseClasses}
+        onClick={onClick}
+      >
+        {label}
+      </a>
+    );
+  }
+  return (
+    <Link href={href} className={baseClasses} onClick={onClick}>
+      {label}
+    </Link>
+  );
+}
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.06] bg-[#050505]/85 backdrop-blur-md">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.1] bg-[#262a33]/85 backdrop-blur-md shadow-lg shadow-black/20">
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         <Link
           href="/"
           onClick={() => setOpen(false)}
-          className="text-sm font-mono font-semibold tracking-tight text-white hover:text-red-500 transition-colors"
+          className="group flex items-center gap-2 text-sm font-mono font-semibold tracking-tight text-white hover:text-red-400 transition-colors"
         >
-          Tioluwani Bakare
+          <span className="h-2 w-2 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)] transition-transform group-hover:scale-125 animate-pulse" />
+          Bakare Tioluwani Boluawatife
         </Link>
 
         {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-6 text-sm font-mono text-slate-500">
-          {links.map(({ label, href, external }) =>
-            external ? (
-              <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                {label}
-              </a>
-            ) : (
-              <Link key={label} href={href} className="hover:text-white transition-colors">
-                {label}
-              </Link>
-            )
-          )}
+        <div className="hidden md:flex items-center gap-7 text-sm font-mono text-slate-200">
+          {links.map((link) => (
+            <NavItem key={link.label} {...link} />
+          ))}
         </div>
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden flex h-8 w-8 items-center justify-center text-slate-400 hover:text-white transition-colors"
+          className="md:hidden flex h-8 w-8 items-center justify-center text-slate-200 hover:text-red-400 transition-colors"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
         >
@@ -59,31 +86,16 @@ export default function Nav() {
 
       {/* Mobile dropdown */}
       {open && (
-        <div className="md:hidden border-t border-white/[0.06]">
-          <div className="mx-auto max-w-5xl px-6 py-5 flex flex-col gap-5 text-sm font-mono text-slate-400">
-            {links.map(({ label, href, external }) =>
-              external ? (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors"
-                  onClick={() => setOpen(false)}
-                >
-                  {label}
-                </a>
-              ) : (
-                <Link
-                  key={label}
-                  href={href}
-                  className="hover:text-white transition-colors"
-                  onClick={() => setOpen(false)}
-                >
-                  {label}
-                </Link>
-              )
-            )}
+        <div className="md:hidden border-t border-white/[0.1] bg-[#262a33]/95 backdrop-blur-xl">
+          <div className="mx-auto max-w-5xl px-6 py-5 flex flex-col gap-4 text-sm font-mono text-slate-200">
+            {links.map((link) => (
+              <NavItem
+                key={link.label}
+                {...link}
+                onClick={() => setOpen(false)}
+                className="py-1 border-b border-white/[0.04] last:border-none"
+              />
+            ))}
           </div>
         </div>
       )}

@@ -23,7 +23,7 @@ export default function RevealSection({
           observer.disconnect();
         }
       },
-      { threshold: 0.12 }
+      { threshold: 0.02 }
     );
     observer.observe(el);
     return () => observer.disconnect();

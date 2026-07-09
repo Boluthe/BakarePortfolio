@@ -37,7 +37,7 @@ export default function CaseStudyPage({
         {/* Back */}
         <Link
           href="/#work"
-          className="mb-10 inline-flex items-center gap-2 text-sm font-mono text-slate-500 hover:text-red-500 transition-colors"
+          className="mb-10 inline-flex items-center gap-2 text-sm font-mono font-medium text-slate-300 hover:text-red-400 transition-colors"
         >
           <svg
             width="16"
@@ -57,12 +57,12 @@ export default function CaseStudyPage({
         <div className="mb-12">
           <div className="mb-4 flex items-center gap-3 font-mono">
             <span
-              className={`rounded-full border px-2.5 py-0.5 text-xs font-medium ${
+              className={`rounded-full border px-3 py-0.5 text-xs font-semibold tracking-wide ${
                 cs.status === "Live"
-                  ? "border-red-500/20 bg-red-500/5 text-red-400"
+                  ? "border-red-500/40 bg-red-500/15 text-red-400 shadow-sm shadow-red-500/10"
                   : cs.status === "MVP"
-                  ? "border-white/10 bg-white/5 text-white"
-                  : "border-white/[0.06] bg-transparent text-slate-500"
+                  ? "border-purple-500/40 bg-purple-500/15 text-purple-300 shadow-sm shadow-purple-500/10"
+                  : "border-slate-700 bg-slate-800/80 text-slate-300"
               }`}
             >
               {cs.status}
@@ -71,21 +71,21 @@ export default function CaseStudyPage({
           <h1 className="mb-4 text-4xl font-bold text-white sm:text-5xl">
             {cs.title}
           </h1>
-          <p className="text-lg text-slate-400">{cs.tagline}</p>
+          <p className="text-lg text-slate-300 font-sans leading-relaxed">{cs.tagline}</p>
         </div>
 
         {/* Content */}
-        <div className="space-y-10 divide-y divide-slate-800">
+        <div className="space-y-10 divide-y divide-slate-800/80">
           <Section label="Problem">
-            <p className="text-slate-300 leading-relaxed">{cs.problem}</p>
+            <p className="text-slate-200 text-base sm:text-lg leading-relaxed font-sans">{cs.problem}</p>
           </Section>
 
           <Section label="Solution">
-            <p className="text-slate-300 leading-relaxed">{cs.solution}</p>
+            <p className="text-slate-200 text-base sm:text-lg leading-relaxed font-sans">{cs.solution}</p>
           </Section>
 
           <Section label="Outcome">
-            <p className="text-slate-300 leading-relaxed">{cs.outcome}</p>
+            <p className="text-slate-200 text-base sm:text-lg leading-relaxed font-sans">{cs.outcome}</p>
           </Section>
 
           <Section label="Tech stack">
@@ -93,7 +93,7 @@ export default function CaseStudyPage({
               {cs.stack.map((tech) => (
                 <span
                   key={tech}
-                  className="rounded border border-white/[0.05] bg-slate-950 px-3 py-1.5 text-xs text-slate-300"
+                  className="rounded border border-slate-700/80 bg-slate-900/80 px-3 py-1.5 text-xs text-slate-200 shadow-sm"
                 >
                   {tech}
                 </span>
@@ -108,7 +108,7 @@ export default function CaseStudyPage({
                   href={cs.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg bg-red-600 px-4 py-2.5 text-xs font-semibold text-white transition-all hover:bg-red-700 hover:shadow-lg hover:shadow-red-600/25"
+                  className="inline-flex items-center gap-2 rounded-lg bg-red-600 px-4 py-2.5 text-xs font-semibold text-white transition-all hover:bg-red-700 hover:shadow-lg hover:shadow-red-600/30"
                 >
                   <svg
                     width="14"
@@ -133,7 +133,7 @@ export default function CaseStudyPage({
                   href={cs.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-xs font-semibold text-slate-300 hover:border-white/20 hover:text-white transition-colors"
+                  className="inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-800/80 px-4 py-2.5 text-xs font-semibold text-slate-200 hover:border-red-500/50 hover:bg-slate-800 hover:text-white transition-all"
                 >
                   <svg
                     width="14"
@@ -150,7 +150,7 @@ export default function CaseStudyPage({
               {cs.availableOnRequest && (
                 <a
                   href="mailto:bakaretioluwani@yahoo.com?subject=Portfolio request — work samples"
-                  className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-xs font-semibold text-slate-300 hover:border-white/20 hover:text-white transition-colors"
+                  className="inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-800/80 px-4 py-2.5 text-xs font-semibold text-slate-200 hover:border-red-500/50 hover:bg-slate-800 hover:text-white transition-all"
                 >
                   Available on request
                 </a>
@@ -160,10 +160,10 @@ export default function CaseStudyPage({
         </div>
 
         {/* Nav between case studies */}
-        <div className="mt-16 flex items-center justify-between border-t border-slate-800 pt-10 font-mono">
+        <div className="mt-16 flex items-center justify-between border-t border-slate-800/80 pt-10 font-mono">
           <Link
             href="/#work"
-            className="text-sm text-slate-500 hover:text-red-500 transition-colors"
+            className="text-sm font-medium text-slate-300 hover:text-red-400 transition-colors"
           >
             ← All work
           </Link>
@@ -171,21 +171,21 @@ export default function CaseStudyPage({
             href="https://wa.me/2349154604723?text=Hi%20Tioluwani%2C%20I%20came%20across%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project%20with%20you."
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-red-500 hover:text-red-400 transition-colors animate-pulse"
+            className="text-sm font-semibold text-red-500 hover:text-red-400 transition-colors animate-pulse"
           >
             Discuss a project →
           </a>
         </div>
       </main>
 
-      <footer className="border-t border-white/[0.06] px-6 py-8">
-        <div className="mx-auto flex max-w-5xl items-center justify-between text-xs text-slate-600">
+      <footer className="border-t border-slate-800/80 px-6 py-8">
+        <div className="mx-auto flex max-w-5xl items-center justify-between text-xs font-mono text-slate-400">
           <span>© 2026 Tioluwani Bakare</span>
           <a
             href="https://github.com/boluthe"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-slate-400 transition-colors"
+            className="hover:text-white transition-colors"
           >
             Lagos, Nigeria
           </a>
@@ -204,7 +204,7 @@ function Section({
 }) {
   return (
     <div className="pt-10 first:pt-0">
-      <h2 className="mb-4 font-mono text-xs text-slate-500">
+      <h2 className="mb-4 font-mono text-xs font-bold text-slate-400">
         {"//"} {label}
       </h2>
       {children}
