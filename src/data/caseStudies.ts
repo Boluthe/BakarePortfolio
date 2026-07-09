@@ -67,6 +67,20 @@ export const caseStudies: CaseStudy[] = [
     stack: ["Spring Boot", "REST APIs", "SQL", "Agile"],
     status: "Live",
   },
+  {
+    slug: "maison-darlington",
+    title: "Maison Darlington",
+    tagline: "Brand website and digital presence for Lagos' boldest street-food truck",
+    problem:
+      "Maison Darlington — a Lagos street-food truck founded by Darlington Sheriff — needed a high-performance web presence that could drive walk-in traffic, handle menu discovery, and convert WhatsApp orders, all while reflecting the brand's bold street-kitchen identity and ranking on Google for competitive Lagos food search terms.",
+    solution:
+      "Built the full brand website using React and Vite with a focus on performance and SEO. Implemented rich structured data (Schema.org Restaurant, FAQPage, BreadcrumbList) for Google rich results and AI answer eligibility. Developed a digital menu with categorised sections (Pasta Series, Grills, Fries, Shawarma, Drinks) and a WhatsApp-powered order flow. Integrated Google Analytics (GA4) and Cloudflare for edge delivery and real-time performance monitoring across Lagos-area search traffic.",
+    outcome:
+      "Site went live at maidarlington.com with full SEO coverage across high-intent Lagos food keywords. The brand achieved a 4.8-star aggregate rating with 100+ reviews captured in structured data, and established an online ordering pipeline via WhatsApp serving multiple Lagos zones including Lekki, VGC, Ikota, and Victoria Island.",
+    stack: ["React", "Vite", "JavaScript", "Cloudflare", "GA4", "Schema.org", "SEO"],
+    liveUrl: "https://maidarlington.com",
+    status: "Live",
+  },
 ];
 
 export function getCaseStudyBySlug(slug: string): CaseStudy | undefined {

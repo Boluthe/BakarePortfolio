@@ -38,6 +38,7 @@ const endpoints: Record<string, { method: "GET" | "POST" | "PUT"; route: string 
   "cmr-system": { method: "GET", route: "/api/v1/bank/reporting" },
   "inventory-management": { method: "PUT", route: "/api/v1/stock/reconcile" },
   "rencash": { method: "POST", route: "/api/v1/loans/apply" },
+  "maison-darlington": { method: "GET", route: "/api/v1/brand/menu" },
 };
 
 const methodColors = {
@@ -90,7 +91,7 @@ export default function HomePage() {
             {/* Stats + certifications */}
             <div className="anim-fade-up delay-5 mt-6 space-y-3">
               <p className="text-[11px] font-mono text-slate-500">
-                {"// 4 projects shipped · 2+ yrs production experience"}
+                {"// Over 10 projects shipped · 3+ yrs production experience"}
               </p>
               <div className="flex flex-wrap gap-2">
                 {certs.map((c) => (
