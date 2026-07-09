@@ -15,9 +15,40 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const cs = getCaseStudyBySlug(params.slug);
   if (!cs) return {};
+  
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://tioluwanibakare.com";
+  const url = `${siteUrl}/case-studies/${cs.slug}`;
+
   return {
-    title: `${cs.title} — Tioluwani Bakare`,
+    title: cs.title,
     description: cs.tagline,
+    keywords: [...cs.stack, "Tioluwani Bakare", cs.title, "Full Stack Case Study", "System Architecture"],
+    alternates: {
+      canonical: `/case-studies/${cs.slug}`,
+    },
+    openGraph: {
+      title: `${cs.title} — Tioluwani Bakare Portfolio`,
+      description: cs.tagline,
+      url,
+      type: "article",
+      authors: ["Tioluwani Bakare"],
+      tags: cs.stack,
+      images: [
+        {
+          url: "/profile.jpg",
+          width: 1200,
+          height: 630,
+          alt: `${cs.title} Case Study Architecture & Performance`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${cs.title} — Software Architecture Case Study`,
+      description: cs.tagline,
+      images: ["/profile.jpg"],
+      creator: "@boluthecreator",
+    },
   };
 }
 
@@ -167,20 +198,18 @@ export default function CaseStudyPage({
           >
             ← All work
           </Link>
-          <a
-            href="https://wa.me/2349154604723?text=Hi%20Tioluwani%2C%20I%20came%20across%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project%20with%20you."
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/#contact"
             className="text-sm font-semibold text-red-500 hover:text-red-400 transition-colors animate-pulse"
           >
             Discuss a project →
-          </a>
+          </Link>
         </div>
       </main>
 
-      <footer className="border-t border-slate-800/80 px-6 py-8">
-        <div className="mx-auto flex max-w-5xl items-center justify-between text-xs font-mono text-slate-400">
-          <span>© 2026 Tioluwani Bakare</span>
+      <footer className="border-t border-slate-800/80 px-6 py-6 pb-16">
+        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 text-xs font-mono text-slate-400 pr-14 sm:pr-20">
+          <span>© 2026 Bakare Tioluwani Boluwatife</span>
           <a
             href="https://github.com/boluthe"
             target="_blank"
