@@ -234,7 +234,7 @@ function Section({
   return (
     <div className="pt-10 first:pt-0">
       <h2 className="mb-4 font-mono text-xs font-bold text-slate-400">
-        {"//"} {label}
+        {label}
       </h2>
       {children}
     </div>

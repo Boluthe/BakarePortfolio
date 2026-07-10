@@ -22,7 +22,7 @@ function NavItem({
   onClick?: () => void;
   className?: string;
 }) {
-  const baseClasses = `transition-all duration-200 hover:text-red-400 font-medium ${className}`;
+  const baseClasses = `transition-all duration-200 hover:text-emerald-400 font-medium ${className}`;
   if (external) {
     return (
       <a
@@ -52,9 +52,9 @@ export default function Nav() {
         <Link
           href="/"
           onClick={() => setOpen(false)}
-          className="group flex items-center gap-2 text-sm font-mono font-semibold tracking-tight text-white hover:text-red-400 transition-colors"
+          className="group flex items-center gap-2 text-sm font-mono font-semibold tracking-tight text-white hover:text-emerald-400 transition-colors"
         >
-          <span className="h-2 w-2 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)] transition-transform group-hover:scale-125 animate-pulse" />
+          <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] transition-transform group-hover:scale-125 animate-pulse" />
           Bakare Tioluwani Boluwatife
         </Link>
 
@@ -67,7 +67,7 @@ export default function Nav() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden flex h-8 w-8 items-center justify-center text-slate-200 hover:text-red-400 transition-colors"
+          className="md:hidden flex h-8 w-8 items-center justify-center text-slate-200 hover:text-emerald-400 transition-colors"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
         >
