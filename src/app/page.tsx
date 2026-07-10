@@ -247,18 +247,18 @@ export default function HomePage() {
         </section>
 
         {/* ── Technical Stack & Capabilities (Full Width Spread-Out Section) ── */}
-        <section className="border-t border-white/[0.08] py-14 px-6">
+        <section className="border-t border-white/[0.08] py-10 sm:py-14 px-6">
           <div className="mx-auto max-w-5xl">
             <RevealSection>
-              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/[0.08] pb-4 mb-8">
-                <h2 className="font-mono text-sm sm:text-base font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2.5">
+              <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-3 border-b border-white/[0.08] pb-3 mb-4 sm:pb-4 sm:mb-8">
+                <h2 className="font-mono text-sm sm:text-base font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2 sm:gap-2.5">
                   <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
                   {"TECHNICAL STACK & CAPABILITIES — FULL SPECTRUM"}
                 </h2>
                 <span className="text-xs font-mono text-slate-400">{"[ CORE_ENGINEERING_TOOLKIT ]"}</span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 font-mono">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 sm:gap-8 font-mono">
                 {skills.map(({ label, items }) => (
                   <div key={label}>
                     <p className="mb-3 text-xs font-bold text-slate-400 uppercase tracking-wider">
@@ -286,7 +286,7 @@ export default function HomePage() {
           {/* Full-Stretch Featured Darlington Container */}
           <div className="mx-auto max-w-5xl px-6">
             <RevealSection>
-              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/[0.08] pb-4 mb-4">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/[0.08] pb-3 mb-3 sm:pb-4 sm:mb-4 sm:gap-3">
                 <h2 className="font-mono text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
                   {"FEATURED WORK & CASE STUDIES"}
@@ -296,7 +296,7 @@ export default function HomePage() {
             </RevealSection>
 
             {/* Unified 2-Column Grid with Horizontal Maison Darlington Card */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch mt-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch mt-3 sm:mt-6">
               {/* Row 1: Invoice Agent & CMR System */}
               {invoiceProject && <StandardCaseStudyCard cs={invoiceProject} />}
               {crmProject && <StandardCaseStudyCard cs={crmProject} />}
@@ -426,10 +426,10 @@ export default function HomePage() {
 
         {/* ── Contact ── */}
         <section id="contact" className="border-t border-white/[0.08] scroll-mt-20">
-          <div className="mx-auto max-w-5xl px-6 py-16">
+          <div className="mx-auto max-w-5xl px-6 pt-6 pb-6 sm:py-16">
             <RevealSection>
               {/* Section Header */}
-              <div className="flex flex-wrap items-end justify-between gap-6 border-b border-white/[0.08] pb-6 mb-10">
+              <div className="flex flex-wrap items-end justify-between gap-4 border-b border-white/[0.08] pb-4 mb-4 sm:pb-6 sm:mb-8 sm:gap-6">
                 <div>
                   <h2 className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2.5 mb-3">
                     <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
@@ -445,7 +445,7 @@ export default function HomePage() {
               </div>
 
               {/* Side-by-Side Layout: Contact Form on Left, Social Media Links on Right */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mt-8">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mt-3 sm:mt-8">
                 {/* Left Side: Contact Form + Mobile Horizontal Social Bar */}
                 <div className="lg:col-span-7 w-full flex flex-col gap-6">
                   <div className="flex-1 w-full">
@@ -609,8 +609,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        <footer className="border-t border-slate-800/80 px-6 py-6 pb-16">
-          <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 text-xs font-mono text-slate-400 pr-14 sm:pr-20">
+        <footer className="border-t border-slate-800/80 px-6 pt-4 pb-12 sm:py-6 sm:pb-16">
+          <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-2 text-[11px] sm:text-xs font-mono text-slate-400 pr-12 sm:pr-20">
             <span>© 2026 Bakare Tioluwani Boluwatife</span>
             <span>Lagos, Nigeria</span>
           </div>

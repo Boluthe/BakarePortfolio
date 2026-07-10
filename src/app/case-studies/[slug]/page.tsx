@@ -27,7 +27,7 @@ export async function generateMetadata({
       canonical: `/case-studies/${cs.slug}`,
     },
     openGraph: {
-      title: `${cs.title} — Tioluwani Bakare Portfolio`,
+      title: `${cs.title} - Tioluwani Bakare Portfolio`,
       description: cs.tagline,
       url,
       type: "article",
@@ -44,7 +44,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${cs.title} — Software Architecture Case Study`,
+      title: `${cs.title} - Software Architecture Case Study`,
       description: cs.tagline,
       images: ["/profile.jpg"],
       creator: "@boluthecreator",

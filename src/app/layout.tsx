@@ -24,8 +24,8 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.bakaretioluwani
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Tioluwani Bakare — Full Stack Engineer | Java, Spring Boot & Next.js",
-    template: "%s — Tioluwani Bakare",
+    default: "Bakare Tioluwani Boluwatife | Full Stack Engineer",
+    template: "%s - Tioluwani Bakare",
   },
   description:
     "Production-proven Full Stack Software Engineer specializing in Java 17, Spring Boot, microservices, enterprise banking systems, and modern React/Next.js frontends. Based in Lagos, Nigeria.",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Tioluwani Bakare — Full Stack Engineer | Java, Spring Boot & Next.js",
+    title: "Tioluwani Bakare - Full Stack Engineer | Java, Spring Boot & Next.js",
     description:
       "Full stack engineer building Java/Spring Boot backends and React/TypeScript frontends. Production banking experience at Union Bank of Nigeria. Open to remote and Lagos-based work.",
     url: siteUrl,
@@ -69,13 +69,13 @@ export const metadata: Metadata = {
         url: "/profile.jpg",
         width: 1200,
         height: 630,
-        alt: "Tioluwani Bakare — Full Stack Engineer Portfolio & Case Studies",
+        alt: "Tioluwani Bakare - Full Stack Engineer Portfolio & Case Studies",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tioluwani Bakare — Full Stack Software Engineer",
+    title: "Tioluwani Bakare - Full Stack Software Engineer",
     description:
       "Production Java/Spring Boot & React/Next.js engineer. Shipped enterprise banking systems and AI-powered SaaS platforms.",
     creator: "@boluthecreator",
