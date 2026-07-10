@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 
 const bootLines = [
-  { text: "init_process --user=tioluwani --daemon", delay: 100 },
+  { text: "init_process --user= bakare tioluwani boluwatife", delay: 100 },
   { text: "checking oracle certifications... [ OCA: OK, OCP: OK ]", delay: 250 },
   { text: "loading database adapters... PostgreSQL pool initialized", delay: 400 },
   { text: "checking backend core dependencies... Java 17 / Go 1.21 OK", delay: 550 },
