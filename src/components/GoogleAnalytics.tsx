@@ -11,7 +11,7 @@ declare global {
   }
 }
 
-export default function Analytics() {
+export default function GoogleAnalytics() {
   const pathname = usePathname();
   const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID || "G-XXXXXXXXXX";
   const isProdGaActive = process.env.NEXT_PUBLIC_GA_ID !== undefined;
