@@ -16,7 +16,7 @@ export async function generateMetadata({
   const cs = getCaseStudyBySlug(params.slug);
   if (!cs) return {};
   
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://tioluwanibakare.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.bakaretioluwani.tech";
   const url = `${siteUrl}/case-studies/${cs.slug}`;
 
   return {

@@ -3,7 +3,7 @@
 import { caseStudies } from "@/data/caseStudies";
 
 export default function StructuredData() {
-  const siteUrl = "https://tioluwanibakare.com";
+  const siteUrl = "https://www.bakaretioluwani.tech";
 
   // Person Schema (GEO & AEO optimized for entity graph and answer engines)
   const personSchema = {

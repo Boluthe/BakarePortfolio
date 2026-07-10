@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { caseStudies } from "@/data/caseStudies";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://tioluwanibakare.com";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.bakaretioluwani.tech";
 
   // Base routes
   const routes: MetadataRoute.Sitemap = [

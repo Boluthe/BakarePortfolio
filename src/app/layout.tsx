@@ -17,7 +17,7 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://tioluwanibakare.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.bakaretioluwani.tech";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
