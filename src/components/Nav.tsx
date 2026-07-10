@@ -5,9 +5,8 @@ import Link from "next/link";
 
 const links = [
   { label: "Work", href: "/#work", external: false },
+  { label: "Resume", href: "/cv.pdf", external: true },
   { label: "Contact", href: "/#contact", external: false },
-  { label: "LinkedIn", href: "https://linkedin.com/in/bakare-tioluwani-96a135261", external: true },
-  { label: "GitHub", href: "https://github.com/boluthe", external: true },
 ];
 
 function NavItem({
@@ -56,7 +55,7 @@ export default function Nav() {
           className="group flex items-center gap-2 text-sm font-mono font-semibold tracking-tight text-white hover:text-red-400 transition-colors"
         >
           <span className="h-2 w-2 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)] transition-transform group-hover:scale-125 animate-pulse" />
-          Bakare Tioluwani Boluawatife
+          Bakare Tioluwani Boluwatife
         </Link>
 
         {/* Desktop links */}
