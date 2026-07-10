@@ -4,6 +4,7 @@ import "./globals.css";
 import BackToTop from "@/components/BackToTop";
 import StructuredData from "@/components/StructuredData";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import CaseStudyBackground from "@/components/CaseStudyBackground";
 import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
@@ -103,10 +104,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
-      <body className="min-h-screen text-slate-100 font-sans antialiased bg-[#0d1117] selection:bg-emerald-500 selection:text-white">
+      <body className="min-h-screen text-slate-100 font-sans antialiased bg-[#0d1117] selection:bg-red-500 selection:text-white relative">
         <StructuredData />
         <GoogleAnalytics />
         <Analytics />
+        <CaseStudyBackground />
         {children}
         <BackToTop />
       </body>

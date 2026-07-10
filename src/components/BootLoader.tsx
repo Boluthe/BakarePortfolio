@@ -67,7 +67,7 @@ export default function BootLoader({ onComplete }: { onComplete: () => void }) {
                 {isCommand ? (
                   <span className="text-white font-semibold">{line}</span>
                 ) : isSuccess ? (
-                  <span className="text-red-500/90">{line}</span>
+                  <span className="text-red-400/90">{line}</span>
                 ) : (
                   <span>{line}</span>
                 )}
@@ -84,7 +84,7 @@ export default function BootLoader({ onComplete }: { onComplete: () => void }) {
       </div>
 
       <div className="mx-auto w-full max-w-3xl text-center text-[10px] text-slate-700 select-none">
-        PORTFOLIO SYSTEM INITIALIZATION // REV 2026.07.01
+        PORTFOLIO SYSTEM INITIALIZATION — REV 2026.07.01
       </div>
     </div>
   );

@@ -54,7 +54,7 @@ export default function Nav() {
           onClick={() => setOpen(false)}
           className="group flex items-center gap-2 text-sm font-mono font-semibold tracking-tight text-white hover:text-emerald-400 transition-colors"
         >
-          <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] transition-transform group-hover:scale-125 animate-pulse" />
+          <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] transition-transform group-hover:scale-125" />
           Bakare Tioluwani Boluwatife
         </Link>
 

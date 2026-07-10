@@ -61,10 +61,10 @@ export default function CaseStudyPage({
   if (!cs) notFound();
 
   return (
-    <div className="relative bg-dot-grid bg-mesh-lines min-h-screen">
+    <div className="relative bg-dot-grid bg-mesh-lines min-h-screen overflow-hidden">
       <Nav />
 
-      <main className="mx-auto max-w-3xl px-6 pb-32 pt-32">
+      <main className="relative z-10 mx-auto max-w-3xl px-6 pb-32 pt-32">
         {/* Back */}
         <Link
           href="/#work"
@@ -90,7 +90,7 @@ export default function CaseStudyPage({
             <span
               className={`rounded-full border px-3 py-0.5 text-xs font-semibold tracking-wide ${
                 cs.status === "Live"
-                  ? "border-red-500/40 bg-red-500/15 text-red-400 shadow-sm shadow-red-500/10"
+                  ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-400 shadow-sm shadow-emerald-500/10"
                   : cs.status === "MVP"
                   ? "border-purple-500/40 bg-purple-500/15 text-purple-300 shadow-sm shadow-purple-500/10"
                   : "border-slate-700 bg-slate-800/80 text-slate-300"
@@ -99,7 +99,7 @@ export default function CaseStudyPage({
               {cs.status}
             </span>
           </div>
-          <h1 className="mb-4 text-4xl font-bold text-white sm:text-5xl">
+          <h1 className="mb-4 text-4xl font-bold text-white sm:text-5xl tracking-tight">
             {cs.title}
           </h1>
           <p className="text-lg text-slate-300 font-sans leading-relaxed">{cs.tagline}</p>
@@ -139,7 +139,7 @@ export default function CaseStudyPage({
                   href={cs.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg bg-red-600 px-4 py-2.5 text-xs font-semibold text-white transition-all hover:bg-red-700 hover:shadow-lg hover:shadow-red-600/30"
+                  className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2.5 text-xs font-semibold text-white transition-all hover:bg-emerald-700 hover:shadow-lg hover:shadow-emerald-600/30"
                 >
                   <svg
                     width="14"
@@ -200,14 +200,14 @@ export default function CaseStudyPage({
           </Link>
           <Link
             href="/#contact"
-            className="text-sm font-semibold text-red-500 hover:text-red-400 transition-colors animate-pulse"
+            className="text-sm font-semibold text-red-500 hover:text-red-400 transition-colors"
           >
             Discuss a project →
           </Link>
         </div>
       </main>
 
-      <footer className="border-t border-slate-800/80 px-6 py-6 pb-16">
+      <footer className="relative z-10 border-t border-slate-800/80 px-6 py-6 pb-16">
         <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 text-xs font-mono text-slate-400 pr-14 sm:pr-20">
           <span>© 2026 Bakare Tioluwani Boluwatife</span>
           <a
