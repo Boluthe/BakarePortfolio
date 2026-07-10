@@ -3,8 +3,8 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import BackToTop from "@/components/BackToTop";
 import StructuredData from "@/components/StructuredData";
-import Analytics from "@/components/Analytics";
-import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -103,10 +103,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
-      <body className="min-h-screen text-slate-100 font-sans antialiased bg-[#0d1117] selection:bg-red-500 selection:text-white">
+      <body className="min-h-screen text-slate-100 font-sans antialiased bg-[#0d1117] selection:bg-emerald-500 selection:text-white">
         <StructuredData />
+        <GoogleAnalytics />
         <Analytics />
-        <VercelAnalytics />
         {children}
         <BackToTop />
       </body>
