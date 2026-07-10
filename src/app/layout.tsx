@@ -4,6 +4,7 @@ import "./globals.css";
 import BackToTop from "@/components/BackToTop";
 import StructuredData from "@/components/StructuredData";
 import Analytics from "@/components/Analytics";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -105,6 +106,7 @@ export default function RootLayout({
       <body className="min-h-screen text-slate-100 font-sans antialiased bg-[#0d1117] selection:bg-red-500 selection:text-white">
         <StructuredData />
         <Analytics />
+        <VercelAnalytics />
         {children}
         <BackToTop />
       </body>

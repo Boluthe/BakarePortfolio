@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
 
-type Tab = "profile" | "logs" | "metrics";
+type Tab = "logs" | "metrics";
 
 const mockInitialLogs = [
   "🚀 Initializing system boot diagnostics...",
@@ -30,18 +29,19 @@ const backendPhrases = [
 ];
 
 export default function ConsoleWidget() {
-  const [activeTab, setActiveTab] = useState<Tab>("profile");
+  const [activeTab, setActiveTab] = useState<Tab>("logs");
   const [logs, setLogs] = useState<string[]>(mockInitialLogs);
   const [cpuUsage, setCpuUsage] = useState(12);
   const [goroutines, setGoroutines] = useState(14);
   const [latency, setLatency] = useState(6);
   
+  const containerRef = useRef<HTMLDivElement>(null);
   const logEndRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll logs
+  // Auto-scroll inside container ONLY without scrolling the browser page
   useEffect(() => {
-    if (activeTab === "logs" && logEndRef.current) {
-      logEndRef.current.scrollIntoView({ behavior: "smooth" });
+    if (activeTab === "logs" && containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
     }
   }, [logs, activeTab]);
 
@@ -86,31 +86,15 @@ export default function ConsoleWidget() {
           <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
           <span className="w-3 h-3 rounded-full bg-[#27c93f]" />
         </div>
-        
-        {/* Connection status tag */}
-        <div className="flex items-center gap-1.5 text-[11px] font-mono font-medium text-red-400">
-          <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse" />
-          <span>JVM_CLUSTER_ON</span>
-        </div>
       </div>
 
       {/* Tabs Menu */}
       <div className="flex border-b border-white/[0.08] bg-[#16181d]/60 text-xs font-mono">
         <button
-          onClick={() => setActiveTab("profile")}
-          className={`flex-1 py-2 px-3 border-r border-white/[0.08] transition-colors duration-200 text-center ${
-            activeTab === "profile" 
-              ? "bg-[#242832] text-red-400 font-bold border-b border-b-red-400" 
-              : "text-slate-500 hover:text-slate-300"
-          }`}
-        >
-          📸 profile.jpg
-        </button>
-        <button
           onClick={() => setActiveTab("logs")}
           className={`flex-1 py-2 px-3 border-r border-white/[0.08] transition-colors duration-200 text-center ${
             activeTab === "logs" 
-              ? "bg-[#242832] text-red-400 font-bold border-b border-b-red-400" 
+              ? "bg-[#242832] text-emerald-400 font-bold border-b border-b-emerald-400" 
               : "text-slate-500 hover:text-slate-300"
           }`}
         >
@@ -120,7 +104,7 @@ export default function ConsoleWidget() {
           onClick={() => setActiveTab("metrics")}
           className={`flex-1 py-2 px-3 transition-colors duration-200 text-center ${
             activeTab === "metrics" 
-              ? "bg-[#242832] text-red-400 font-bold border-b border-b-red-400" 
+              ? "bg-[#242832] text-emerald-400 font-bold border-b border-b-emerald-400" 
               : "text-slate-500 hover:text-slate-300"
           }`}
         >
@@ -129,35 +113,10 @@ export default function ConsoleWidget() {
       </div>
 
       {/* Content Area */}
-      <div className="h-64 sm:h-76 md:h-80 overflow-y-auto bg-[#070e17]/95 p-4 flex flex-col">
-        {/* PROFILE IMAGE TAB */}
-        {activeTab === "profile" && (
-          <div className="flex flex-col items-center justify-center h-full gap-3 py-2">
-            <div className="relative">
-              <div className="absolute -inset-px rounded-xl bg-gradient-to-br from-red-500/30 via-transparent to-red-500/20" />
-              <div className="relative w-36 h-44 sm:w-40 sm:h-48 overflow-hidden rounded-xl bg-slate-800 shadow-lg">
-                <Image
-                  src="/profile.jpg"
-                  alt="Tioluwani Bakare"
-                  width={200}
-                  height={240}
-                  className="h-full w-full object-cover object-top filter grayscale contrast-125 brightness-95"
-                  priority
-                />
-              </div>
-            </div>
-            <div className="text-center font-mono text-[11px] text-slate-500">
-              $ cat metadata.json
-              <div className="text-red-400/90 text-xs font-bold mt-1">
-                Tioluwani Bakare — fullstack.bin
-              </div>
-            </div>
-          </div>
-        )}
-
+      <div ref={containerRef} className="h-64 sm:h-76 md:h-80 overflow-y-auto bg-[#070e17]/95 p-4 flex flex-col">
         {/* LOGS TAB */}
         {activeTab === "logs" && (
-          <div className="flex-1 font-mono text-[10px] sm:text-[11px] text-slate-300 space-y-1.5 leading-relaxed selection:bg-red-500 selection:text-white">
+          <div className="flex-1 font-mono text-[10px] sm:text-[11px] text-slate-300 space-y-1.5 leading-relaxed selection:bg-emerald-500 selection:text-white">
             {logs.map((log, i) => {
               const isOk = log.includes("200 OK") || log.includes("UP");
               const isAccepted = log.includes("202 Accepted");
@@ -165,9 +124,9 @@ export default function ConsoleWidget() {
                 <div key={i} className="break-all border-l-2 border-slate-800/40 pl-2">
                   <span className="text-slate-600">$&nbsp;</span>
                   {isOk ? (
-                    <span className="text-red-400">{log}</span>
+                    <span className="text-emerald-400">{log}</span>
                   ) : isAccepted ? (
-                    <span className="text-red-300">{log}</span>
+                    <span className="text-emerald-300">{log}</span>
                   ) : (
                     <span>{log}</span>
                   )}
@@ -184,12 +143,12 @@ export default function ConsoleWidget() {
             <div>
               <div className="flex justify-between text-[11px] mb-1">
                 <span className="text-slate-500">CPU LOAD (SYSTEM)</span>
-                <span className={cpuUsage > 50 ? "text-amber-400" : "text-red-400"}>{cpuUsage}%</span>
+                <span className={cpuUsage > 50 ? "text-amber-400" : "text-emerald-400"}>{cpuUsage}%</span>
               </div>
               <div className="w-full bg-slate-900 h-2 rounded-full overflow-hidden border border-white/[0.04]">
                 <div 
                   className={`h-full transition-all duration-500 rounded-full ${
-                    cpuUsage > 50 ? "bg-amber-500" : "bg-red-500"
+                    cpuUsage > 50 ? "bg-amber-500" : "bg-emerald-500"
                   }`} 
                   style={{ width: `${cpuUsage}%` }} 
                 />
@@ -199,19 +158,19 @@ export default function ConsoleWidget() {
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-slate-950/40 p-3 rounded-xl border border-white/[0.04]">
                 <span className="text-[10px] text-slate-500 block uppercase">Go Routines</span>
-                <span className="text-[15px] font-bold text-red-400 mt-1 block">{goroutines} active</span>
+                <span className="text-[15px] font-bold text-emerald-400 mt-1 block">{goroutines} active</span>
               </div>
               
               <div className="bg-slate-950/40 p-3 rounded-xl border border-white/[0.04]">
                 <span className="text-[10px] text-slate-500 block uppercase">DB Latency</span>
-                <span className="text-[15px] font-bold text-red-400 mt-1 block">{latency}ms</span>
+                <span className="text-[15px] font-bold text-emerald-400 mt-1 block">{latency}ms</span>
               </div>
             </div>
 
             <div className="space-y-2 text-[11px] border-t border-white/[0.06] pt-3">
               <div className="flex justify-between">
                 <span className="text-slate-500">DATABASE STATUS</span>
-                <span className="text-red-400 font-bold">CONNECTED (PostgreSQL)</span>
+                <span className="text-emerald-400 font-bold">CONNECTED (PostgreSQL)</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-500">JVM HEAP MEMORY</span>
@@ -219,7 +178,7 @@ export default function ConsoleWidget() {
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-500">CACHE SYSTEM</span>
-                <span className="text-red-400 font-bold">ACTIVE (Redis Cluster)</span>
+                <span className="text-emerald-400 font-bold">ACTIVE (Redis Cluster)</span>
               </div>
             </div>
           </div>

@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import Nav from "@/components/Nav";
 import RevealSection from "@/components/RevealSection";
-import ConsoleWidget from "@/components/ConsoleWidget";
 import { caseStudies } from "@/data/caseStudies";
 import Link from "next/link";
 import BootLoader from "@/components/BootLoader";
@@ -59,14 +58,14 @@ export default function HomePage() {
         <Nav />
 
         {/* ── Hero ── */}
-        <section className="mx-auto max-w-6xl px-6">
-          <div className="grid items-start gap-10 pb-12 pt-28 lg:grid-cols-[1.15fr_420px] lg:gap-14">
+        <section className="mx-auto max-w-5xl px-6">
+          <div className="grid items-start gap-10 pb-12 pt-28 lg:grid-cols-[1fr_300px] lg:gap-16">
 
             {/* Text — left */}
             <div className="order-2 lg:order-1">
               <div className="anim-fade-up delay-1 mb-5 flex flex-wrap items-center gap-2 text-xs font-mono">
                 <span className="text-slate-300 font-semibold">$ curl -s /system/health</span>
-                <span className="rounded-md border border-red-500/40 bg-red-500/15 px-2.5 py-0.5 font-bold uppercase text-red-400 animate-pulse shadow-sm shadow-red-500/10">
+                <span className="rounded-md border border-emerald-500/40 bg-emerald-500/15 px-2.5 py-0.5 font-bold uppercase text-emerald-400 animate-pulse shadow-sm shadow-emerald-500/10">
                   ● Open to Work
                 </span>
                 <span className="text-slate-500">·</span>
@@ -78,8 +77,8 @@ export default function HomePage() {
                 Boluwatife
               </h1>
 
-              <p className="anim-fade-up delay-3 mt-4 font-mono text-lg font-medium text-red-500 tracking-tight">
-                Full_Stack_Engineer<span className="font-bold text-red-500 animate-pulse font-sans">_</span>
+              <p className="anim-fade-up delay-3 mt-4 font-mono text-lg font-medium text-emerald-400 tracking-tight">
+                Full_Stack_Engineer<span className="font-bold text-emerald-400 animate-pulse font-sans">_</span>
               </p>
 
               <p className="anim-fade-up delay-4 mt-6 max-w-md text-[15px] leading-relaxed text-slate-200 font-sans">
@@ -91,7 +90,7 @@ export default function HomePage() {
               {/* Stats + certifications */}
               <div className="anim-fade-up delay-5 mt-6 space-y-3">
                 <p className="text-[11px] font-mono font-medium text-slate-400">
-                  {"// Over 10 projects shipped · 3+ yrs production experience"}
+                  {"Over 10 projects shipped · 3+ yrs production experience"}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {certs.map((c) => (
@@ -142,35 +141,48 @@ export default function HomePage() {
 
               {/* Skills grouped by category */}
               <div className="mt-12 pt-8 border-t border-white/[0.08]">
-                <h2 className="font-mono text-xs font-bold uppercase tracking-wider text-red-400 mb-6 flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
-                  {"// TECHNICAL STACK & CAPABILITIES"}
+                <h2 className="font-mono text-xs font-bold uppercase tracking-wider text-emerald-400 mb-6 flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                  {"TECHNICAL STACK & CAPABILITIES"}
                 </h2>
-              <div className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8 font-mono">
-                {skills.map(({ label, items }) => (
-                  <div key={label}>
-                    <p className="mb-2 text-xs font-bold text-slate-400">
-                      {"//"} {label}
-                    </p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {items.map((item) => (
-                        <span
-                          key={item}
-                          className="rounded border border-slate-700/70 bg-[#1e222b]/90 px-2.5 py-1 text-xs text-slate-200 shadow-sm transition-all hover:border-red-500/50 hover:bg-slate-800 hover:text-white"
-                        >
-                          {item}
-                        </span>
-                      ))}
+                <div className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8 font-mono">
+                  {skills.map(({ label, items }) => (
+                    <div key={label}>
+                      <p className="mb-2 text-xs font-bold text-slate-400">
+                        {label}
+                      </p>
+                      <div className="flex flex-wrap gap-1.5">
+                        {items.map((item) => (
+                          <span
+                            key={item}
+                            className="rounded border border-slate-700/70 bg-[#1e222b]/90 px-2.5 py-1 text-xs text-slate-200 shadow-sm transition-all hover:border-red-500/50 hover:bg-slate-800 hover:text-white"
+                          >
+                            {item}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
 
-            {/* Interactive Terminal / Profile Console Widget — right */}
-            <div className="anim-fade-up delay-2 order-1 flex justify-center lg:order-2 lg:justify-end w-full lg:sticky lg:top-28">
-              <ConsoleWidget />
+            {/* Photo — right */}
+            <div className="anim-fade-up delay-2 order-1 flex justify-center lg:order-2 lg:justify-end lg:pt-1.5">
+              <div className="relative">
+                <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-white/40 via-transparent to-white/10" />
+                <div className="relative w-56 overflow-hidden rounded-2xl bg-slate-900 border border-white/30 shadow-2xl shadow-white/10 sm:w-64 lg:w-72">
+                  <Image
+                    src="/profile.jpg"
+                    alt="Tioluwani Bakare"
+                    width={320}
+                    height={400}
+                    className="h-auto w-full object-cover object-top filter contrast-105 transition-transform duration-500 hover:scale-105"
+                    priority
+                  />
+                </div>
+                <div className="absolute -inset-6 -z-10 rounded-3xl bg-white/10 blur-2xl" />
+              </div>
             </div>
 
           </div>
@@ -182,9 +194,9 @@ export default function HomePage() {
           <div className="mx-auto max-w-[1500px] px-4 sm:px-6 md:px-10">
             <RevealSection>
               <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/[0.08] pb-4 mb-4">
-                <h2 className="font-mono text-xs font-bold uppercase tracking-wider text-red-400 flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
-                  {"// FEATURED WORK & CASE STUDIES"}
+                <h2 className="font-mono text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                  {"FEATURED WORK & CASE STUDIES"}
                 </h2>
                 <span className="text-[11px] font-mono text-slate-400">{"[ PRODUCTION_READY_SYSTEMS ]"}</span>
               </div>
@@ -193,11 +205,11 @@ export default function HomePage() {
             {/* Featured Horizontal Card for Maison Darlington with Stretched Desktop Live Preview */}
             {maisonProject && (
               <RevealSection className="mt-6">
-                <div className="group relative rounded-3xl border border-white/[0.08] bg-[#1e222b]/90 backdrop-blur-xl shadow-2xl transition-all duration-500 hover:border-red-500/50 hover:bg-[#242832]/95 hover:shadow-[0_0_60px_-10px_rgba(239,68,68,0.25)] overflow-hidden">
+                <div className="group relative rounded-3xl border border-white/[0.08] bg-[#1e222b]/90 backdrop-blur-xl shadow-2xl transition-all duration-500 hover:border-emerald-500/50 hover:bg-[#242832]/95 hover:shadow-[0_0_60px_-10px_rgba(16,185,129,0.25)] overflow-hidden">
                   {/* Top Status Header */}
                   <div className="flex flex-wrap items-center justify-between border-b border-slate-800/80 px-6 sm:px-8 py-4 font-mono text-xs bg-[#16181d]/95">
                     <div className="flex items-center gap-3">
-                      <span className="rounded px-2.5 py-0.5 font-bold border tracking-wider text-[10px] text-red-400 bg-red-500/15 border-red-500/30">
+                      <span className="rounded px-2.5 py-0.5 font-bold border tracking-wider text-[10px] text-emerald-400 bg-emerald-500/15 border-emerald-500/30">
                         GET
                       </span>
                       <span className="text-slate-200 font-semibold select-all text-xs sm:text-sm">
@@ -207,8 +219,7 @@ export default function HomePage() {
                       <span className="hidden sm:inline text-slate-400 font-normal text-xs">FEATURED_PRODUCTION_SYSTEM</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="flex items-center gap-2 text-xs font-bold text-red-400">
-                        <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.9)]" />
+                      <span className="text-xs font-bold text-emerald-400">
                         LIVE ON PROD
                       </span>
                     </div>
@@ -280,10 +291,10 @@ export default function HomePage() {
                     {/* Right Side: Case Study Details */}
                     <div className="xl:col-span-5 lg:col-span-5 flex flex-col justify-between h-full font-mono py-1">
                       <div>
-                        <div className="inline-flex items-center gap-2 text-xs sm:text-sm text-red-400 font-bold mb-2.5">
-                          <span>{"// FEATURED_PRODUCTION_SYSTEM"}</span>
+                        <div className="inline-flex items-center gap-2 text-xs sm:text-sm text-emerald-400 font-bold mb-2.5">
+                          <span>{"FEATURED_PRODUCTION_SYSTEM"}</span>
                         </div>
-                        <h3 className="text-3xl sm:text-4xl font-bold text-white tracking-tight group-hover:text-red-400 transition-colors">
+                        <h3 className="text-3xl sm:text-4xl font-bold text-white tracking-tight group-hover:text-emerald-400 transition-colors">
                           {maisonProject.title}
                         </h3>
                         <p className="mt-3 text-slate-300 font-sans text-sm sm:text-base leading-relaxed font-normal">
@@ -292,14 +303,14 @@ export default function HomePage() {
 
                         <div className="mt-6 space-y-4 pt-5 border-t border-slate-800/80 text-xs text-slate-300">
                           <div className="flex flex-col gap-1.5">
-                            <span className="text-red-400 font-bold tracking-wider select-none text-xs">[ CHALLENGE & SCOPE ]</span>
+                            <span className="text-emerald-400 font-bold tracking-wider select-none text-xs">[ CHALLENGE & SCOPE ]</span>
                             <p className="text-slate-300 font-sans text-xs sm:text-[13.5px] leading-relaxed">
                               {maisonProject.problem}
                             </p>
                           </div>
 
                           <div className="flex flex-col gap-1.5 pt-2">
-                            <span className="text-red-400 font-bold tracking-wider select-none text-xs">[ SOLUTION & PERFORMANCE ]</span>
+                            <span className="text-emerald-400 font-bold tracking-wider select-none text-xs">[ SOLUTION & PERFORMANCE ]</span>
                             <p className="text-slate-300 font-sans text-xs sm:text-[13.5px] leading-relaxed">
                               {maisonProject.solution}
                             </p>
@@ -309,13 +320,13 @@ export default function HomePage() {
                         {/* Tech Stack Chips */}
                         <div className="mt-7">
                           <span className="text-xs text-slate-400 font-bold uppercase tracking-wider block mb-3">
-                            {"// System Architecture & Stack"}
+                            {"System Architecture & Stack"}
                           </span>
                           <div className="flex flex-wrap gap-2">
                             {maisonProject.stack.map((tech) => (
                               <span
                                 key={tech}
-                                className="rounded-md border border-slate-700/80 bg-zinc-900/90 px-3 py-1.5 text-xs font-semibold text-slate-200 transition-all hover:border-red-500/60 hover:bg-slate-800 hover:text-white shadow-sm"
+                                className="rounded-md border border-slate-700/80 bg-zinc-900/90 px-3 py-1.5 text-xs font-semibold text-slate-200 transition-all hover:border-emerald-500/60 hover:bg-slate-800 hover:text-white shadow-sm"
                               >
                                 {tech}
                               </span>
@@ -448,9 +459,9 @@ export default function HomePage() {
             <RevealSection>
               <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
                 <div>
-                  <h2 className="font-mono text-xs font-bold uppercase tracking-wider text-red-400 flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
-                    {"// DIRECT CONTACT & AVAILABILITY"}
+                  <h2 className="font-mono text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                    {"DIRECT CONTACT & AVAILABILITY"}
                   </h2>
                   <p className="mt-5 font-mono text-3xl font-bold leading-tight tracking-tight text-white">
                     Available_for_work()
@@ -619,7 +630,6 @@ export default function HomePage() {
         <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-white/[0.1] bg-[#262a33]/95 backdrop-blur-md px-4 sm:px-6 py-2 text-[10px] sm:text-xs font-mono font-medium text-slate-300 flex flex-wrap justify-between items-center gap-2 select-none shadow-2xl">
           <div className="flex items-center gap-2 sm:gap-4 truncate">
             <span className="flex items-center gap-1.5 text-emerald-400 font-semibold tracking-wider shrink-0">
-              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
               SYSTEM_OK
             </span>
             <span className="hidden sm:inline text-slate-500">|</span>
