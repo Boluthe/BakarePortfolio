@@ -3,9 +3,13 @@
 import { useState, useEffect, useCallback } from "react";
 
 const bootLines = [
-  "$ init portfolio --mode=interactive",
-  "[OK] Verified system architecture & core stack",
-  "[OK] Launching interactive workspace...",
+  "$ ./kernel_init --target=bakare.tech --mode=secure_access",
+  "[KERNEL] Allocating memory pages & initializing core subsystem... [OK]",
+  "[CRYPTO] Handshaking RSA-4096 / AES-256-GCM secure enclave... [OK]",
+  "[NETWORK] Establishing encrypted tunnel [127.0.0.1:8080]... [OK]",
+  "[AUTH] Validating engineer security token for Bakare Tioluwani... [GRANTED]",
+  "[SYS] Decrypting portfolio case studies & production systems... 100%",
+  ">>> ACCESS GRANTED: WELCOME TO THE SYSTEM <<<",
 ];
 
 export default function BootLoader({ onComplete }: { onComplete: () => void }) {
@@ -31,18 +35,18 @@ export default function BootLoader({ onComplete }: { onComplete: () => void }) {
     const timers = bootLines.map((line, idx) => {
       return setTimeout(() => {
         setLines((prev) => [...prev, line]);
-      }, 150 + idx * 280);
+      }, 120 + idx * 240);
     });
 
     // Fade out overlay after logs complete
     const fadeTimer = setTimeout(() => {
       setFade(true);
-    }, 950);
+    }, 1850);
 
     // Call onComplete to reveal home page layout
     const completeTimer = setTimeout(() => {
       onComplete();
-    }, 1200);
+    }, 2100);
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
@@ -55,7 +59,7 @@ export default function BootLoader({ onComplete }: { onComplete: () => void }) {
   return (
     <div
       onClick={handleSkip}
-      className={`fixed inset-0 z-50 flex flex-col justify-between bg-[#12141a] dark:bg-[#12141a] light:bg-[#f8fafc] font-mono p-8 selection:bg-emerald-500 selection:text-white transition-opacity duration-500 ease-in-out cursor-pointer ${
+      className={`fixed inset-0 z-50 flex flex-col justify-between bg-[#0d1117] dark:bg-[#0d1117] light:bg-[#f8fafc] font-mono p-8 selection:bg-emerald-500 selection:text-white transition-opacity duration-500 ease-in-out cursor-pointer ${
         fade ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
@@ -73,15 +77,20 @@ export default function BootLoader({ onComplete }: { onComplete: () => void }) {
       </div>
 
       {/* Pure, uncluttered centered terminal typography */}
-      <div className="mx-auto max-w-lg w-full my-auto px-4">
+      <div className="mx-auto max-w-xl w-full my-auto px-4">
         <div className="space-y-4 text-sm sm:text-base leading-relaxed">
           {lines.map((line, i) => {
             const isCommand = line.startsWith("$");
-            const isSuccess = line.includes("[OK]");
+            const isSuccess = line.includes("[OK]") || line.includes("[GRANTED]") || line.includes("100%");
+            const isHeader = line.startsWith(">>>");
             return (
               <div key={i} className="flex items-start gap-3">
                 {isCommand ? (
                   <span className="text-emerald-400 dark:text-emerald-400 light:text-emerald-600 font-bold tracking-wide">
+                    {line}
+                  </span>
+                ) : isHeader ? (
+                  <span className="text-emerald-400 dark:text-emerald-400 light:text-emerald-600 font-bold tracking-wider pt-1 animate-pulse">
                     {line}
                   </span>
                 ) : isSuccess ? (
@@ -103,8 +112,11 @@ export default function BootLoader({ onComplete }: { onComplete: () => void }) {
         </div>
       </div>
 
-      {/* Bottom spacer for perfect vertical centering */}
-      <div className="h-6" />
+      {/* Subtle bottom diagnostic */}
+      <div className="flex justify-between items-center text-xs font-mono text-slate-500">
+        <span>SYSTEM_BOOT_KERNEL // v4.19</span>
+        <span>STATUS: OK</span>
+      </div>
     </div>
   );
 }

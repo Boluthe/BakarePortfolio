@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import Nav from "@/components/Nav";
+import CaseStudyBackground from "@/components/CaseStudyBackground";
 import { caseStudies, getCaseStudyBySlug } from "@/data/caseStudies";
 
 export function generateStaticParams() {
@@ -62,6 +63,7 @@ export default function CaseStudyPage({
 
   return (
     <div className="relative bg-dot-grid bg-mesh-lines min-h-screen overflow-hidden">
+      <CaseStudyBackground />
       <Nav />
 
       <main className="relative z-10 mx-auto max-w-3xl px-6 pb-32 pt-32">
@@ -90,10 +92,10 @@ export default function CaseStudyPage({
             <span
               className={`rounded-full border px-3 py-0.5 text-xs font-semibold tracking-wide ${
                 cs.status === "Live"
-                  ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-400 dark:text-emerald-400 light:text-emerald-700 shadow-sm shadow-emerald-500/10"
+                  ? "border-emerald-500/40 light:border-emerald-400 bg-emerald-500/15 light:bg-emerald-100 text-emerald-400 dark:text-emerald-400 light:text-emerald-950 shadow-sm shadow-emerald-500/10"
                   : cs.status === "MVP"
-                  ? "border-purple-500/40 bg-purple-500/15 text-purple-300 dark:text-purple-300 light:text-purple-700 shadow-sm shadow-purple-500/10"
-                  : "border-slate-700 dark:border-slate-700 light:border-slate-300 bg-slate-800/80 dark:bg-slate-800/80 light:bg-slate-100 text-slate-300 dark:text-slate-300 light:text-slate-800"
+                  ? "border-purple-500/40 light:border-purple-400 bg-purple-500/15 light:bg-purple-100 text-purple-300 dark:text-purple-300 light:text-purple-950 shadow-sm shadow-purple-500/10"
+                  : "border-slate-700 dark:border-slate-700 light:border-slate-400 bg-slate-800/80 dark:bg-slate-800/80 light:bg-slate-200 text-slate-300 dark:text-slate-300 light:text-slate-900"
               }`}
             >
               {cs.status}
@@ -102,21 +104,21 @@ export default function CaseStudyPage({
           <h1 className="mb-4 text-4xl font-bold text-white dark:text-white light:text-slate-900 sm:text-5xl tracking-tight">
             {cs.title}
           </h1>
-          <p className="text-lg text-slate-300 dark:text-slate-300 light:text-slate-700 font-sans leading-relaxed">{cs.tagline}</p>
+          <p className="text-[15px] sm:text-base text-slate-300 dark:text-slate-300 light:text-slate-700 font-sans leading-relaxed">{cs.tagline}</p>
         </div>
 
         {/* Content */}
         <div className="space-y-10 divide-y divide-slate-800/80 dark:divide-white/[0.08] light:divide-slate-200">
           <Section label="Problem">
-            <p className="text-slate-200 dark:text-slate-200 light:text-slate-700 text-base sm:text-lg leading-relaxed font-sans">{cs.problem}</p>
+            <p className="text-slate-200 dark:text-slate-200 light:text-slate-700 text-[15px] sm:text-base leading-relaxed font-sans">{cs.problem}</p>
           </Section>
 
           <Section label="Solution">
-            <p className="text-slate-200 dark:text-slate-200 light:text-slate-700 text-base sm:text-lg leading-relaxed font-sans">{cs.solution}</p>
+            <p className="text-slate-200 dark:text-slate-200 light:text-slate-700 text-[15px] sm:text-base leading-relaxed font-sans">{cs.solution}</p>
           </Section>
 
           <Section label="Outcome">
-            <p className="text-slate-200 dark:text-slate-200 light:text-slate-700 text-base sm:text-lg leading-relaxed font-sans">{cs.outcome}</p>
+            <p className="text-slate-200 dark:text-slate-200 light:text-slate-700 text-[15px] sm:text-base leading-relaxed font-sans">{cs.outcome}</p>
           </Section>
 
           <Section label="Tech stack">

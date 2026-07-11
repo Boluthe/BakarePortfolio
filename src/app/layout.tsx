@@ -3,7 +3,6 @@ import "./globals.css";
 import BackToTop from "@/components/BackToTop";
 import StructuredData from "@/components/StructuredData";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
-import CaseStudyBackground from "@/components/CaseStudyBackground";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { ToastProvider } from "@/components/Toast";
@@ -113,13 +112,12 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body className="min-h-screen text-slate-100 dark:text-slate-100 light:text-slate-900 font-sans antialiased selection:bg-red-500 selection:text-white relative transition-colors duration-300">
+      <body className="min-h-screen text-slate-100 dark:text-slate-100 light:text-slate-900 font-sans antialiased selection:bg-red-500 selection:text-white relative">
         <ThemeProvider>
           <ToastProvider>
             <StructuredData />
             <GoogleAnalytics />
             <Analytics />
-            <CaseStudyBackground />
             {children}
             <BackToTop />
           </ToastProvider>

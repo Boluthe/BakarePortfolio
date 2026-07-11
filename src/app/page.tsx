@@ -8,13 +8,14 @@ import { caseStudies, CaseStudy } from "@/data/caseStudies";
 import Link from "next/link";
 import BootLoader from "@/components/BootLoader";
 import ContactForm from "@/components/ContactForm";
+import CaseStudyBackground from "@/components/CaseStudyBackground";
 
 const INSTAGRAM_LINK = "https://www.instagram.com/boluthecreator._/";
 
 const statusColors = {
-  Live: "text-emerald-400 bg-emerald-500/15 border-emerald-500/30 font-semibold shadow-sm shadow-emerald-500/10",
-  MVP: "text-purple-300 bg-purple-500/15 border-purple-500/30 font-semibold shadow-sm shadow-purple-500/10",
-  "In Progress": "text-slate-300 bg-slate-800/80 border-slate-700 font-semibold",
+  Live: "text-emerald-400 dark:text-emerald-400 light:text-emerald-950 bg-emerald-500/15 light:bg-emerald-100 border-emerald-500/30 light:border-emerald-400 font-bold shadow-sm shadow-emerald-500/10",
+  MVP: "text-purple-300 dark:text-purple-300 light:text-purple-950 bg-purple-500/15 light:bg-purple-100 border-purple-500/30 light:border-purple-400 font-bold shadow-sm shadow-purple-500/10",
+  "In Progress": "text-slate-300 dark:text-slate-300 light:text-slate-900 bg-slate-800/80 light:bg-slate-200 border-slate-700 light:border-slate-400 font-bold",
 } as const;
 
 const skills = [
@@ -27,19 +28,19 @@ const skills = [
 
 const categoryAccents: Record<string, { badge: string }> = {
   "Languages": {
-    badge: "border-amber-500/35 bg-amber-500/[0.06] text-amber-300 dark:text-amber-300 light:text-amber-800 light:bg-amber-100/70 hover:border-amber-400 hover:bg-amber-500/15",
+    badge: "border-amber-500/35 bg-amber-500/[0.06] text-amber-300 dark:text-amber-300 light:text-amber-950 light:bg-amber-100 light:border-amber-400 hover:border-amber-400 hover:bg-amber-500/15 light:hover:bg-amber-200 font-semibold",
   },
   "Frameworks & UI": {
-    badge: "border-emerald-500/35 bg-emerald-500/[0.06] text-emerald-300 dark:text-emerald-300 light:text-emerald-800 light:bg-emerald-100/70 hover:border-emerald-400 hover:bg-emerald-500/15",
+    badge: "border-emerald-500/35 bg-emerald-500/[0.06] text-emerald-300 dark:text-emerald-300 light:text-emerald-950 light:bg-emerald-100 light:border-emerald-400 hover:border-emerald-400 hover:bg-emerald-500/15 light:hover:bg-emerald-200 font-semibold",
   },
   "Databases": {
-    badge: "border-sky-500/35 bg-sky-500/[0.06] text-sky-300 dark:text-sky-300 light:text-sky-800 light:bg-sky-100/70 hover:border-sky-400 hover:bg-sky-500/15",
+    badge: "border-sky-500/35 bg-sky-500/[0.06] text-sky-300 dark:text-sky-300 light:text-sky-950 light:bg-sky-100 light:border-sky-400 hover:border-sky-400 hover:bg-sky-500/15 light:hover:bg-sky-200 font-semibold",
   },
   "DevOps & Observability": {
-    badge: "border-purple-500/35 bg-purple-500/[0.06] text-purple-300 dark:text-purple-300 light:text-purple-800 light:bg-purple-100/70 hover:border-purple-400 hover:bg-purple-500/15",
+    badge: "border-purple-500/35 bg-purple-500/[0.06] text-purple-300 dark:text-purple-300 light:text-purple-950 light:bg-purple-100 light:border-purple-400 hover:border-purple-400 hover:bg-purple-500/15 light:hover:bg-purple-200 font-semibold",
   },
   "AI & Automation": {
-    badge: "border-rose-500/35 bg-rose-500/[0.06] text-rose-300 dark:text-rose-300 light:text-rose-800 light:bg-rose-100/70 hover:border-rose-400 hover:bg-rose-500/15",
+    badge: "border-rose-500/35 bg-rose-500/[0.06] text-rose-300 dark:text-rose-300 light:text-rose-950 light:bg-rose-100 light:border-rose-400 hover:border-rose-400 hover:bg-rose-500/15 light:hover:bg-rose-200 font-semibold",
   },
 };
 
@@ -60,9 +61,9 @@ const endpoints: Record<string, { method: "GET" | "POST" | "PUT"; route: string 
 };
 
 const methodColors = {
-  GET: "text-emerald-400 dark:text-emerald-400 light:text-emerald-700 bg-emerald-500/15 border-emerald-500/30 font-semibold",
-  POST: "text-sky-300 dark:text-sky-300 light:text-sky-700 bg-sky-500/15 border-sky-500/30 font-semibold",
-  PUT: "text-amber-300 dark:text-amber-300 light:text-amber-700 bg-amber-500/15 border-amber-500/30 font-semibold",
+  GET: "text-emerald-400 dark:text-emerald-400 light:text-emerald-900 bg-emerald-500/15 light:bg-emerald-100 border-emerald-500/30 light:border-emerald-300 font-semibold",
+  POST: "text-sky-300 dark:text-sky-300 light:text-sky-900 bg-sky-500/15 light:bg-sky-100 border-sky-500/30 light:border-sky-300 font-semibold",
+  PUT: "text-amber-300 dark:text-amber-300 light:text-amber-900 bg-amber-500/15 light:bg-amber-100 border-amber-500/30 light:border-amber-300 font-semibold",
 } as const;
 
 function StandardCaseStudyCard({ cs }: { cs: CaseStudy }) {
@@ -159,6 +160,7 @@ export default function HomePage() {
     <>
       {booting && <BootLoader onComplete={() => setBooting(false)} />}
       <div className={`relative bg-dot-grid bg-mesh-lines min-h-screen transition-opacity duration-700 ${booting ? "opacity-0" : "opacity-100"}`}>
+        {!booting && <CaseStudyBackground />}
         <Nav />
 
         {/* ── Hero ── */}
@@ -186,9 +188,12 @@ export default function HomePage() {
               </p>
 
               <p className="anim-fade-up delay-4 mt-6 max-w-md text-[15px] leading-relaxed text-slate-200 dark:text-slate-200 light:text-slate-700 font-sans">
-                I have production experience across various SaaS products, e-commerce, and AI-assisted platforms. I build Spring Boot backend systems
-                and React frontend systems....from internal banking APIs and AI-powered
-                invoice automation to live consumer products.
+                I am a full stack software developer with hands-on experience building end-to-end web applications,
+                production-grade REST-APIs, internal banking systems, and AI-assisted operational platforms. My experience spans from frontend application development,
+                backend architecture, workflow automation, authentication systems, and also to scalable business operations tooling using Java, React, Spring Boot,
+                PostgreSQL, and modern web technologies. My projects include receivables management systems, AI-assisted escalation workflows, webhook-driven automation, async task processing,
+                and operational dashboards designed around real business operations. I also have experience contributing to live banking infrastructure at Union Bank of Nigeria,
+                with exposure to CI/CD pipelines, containerization, monitoring systems, and infrastructure tooling. 
               </p>
 
               {/* Stats + certifications */}
@@ -200,9 +205,9 @@ export default function HomePage() {
                   {certs.map((c) => (
                     <span
                       key={c}
-                      className="inline-flex items-center gap-1.5 rounded border border-amber-500/30 bg-amber-500/10 px-2.5 py-0.5 text-[11px] font-mono font-medium text-amber-300 shadow-sm shadow-amber-500/5"
+                      className="inline-flex items-center gap-1.5 rounded border border-amber-500/30 dark:border-amber-500/30 light:border-amber-400 bg-amber-500/10 dark:bg-amber-500/10 light:bg-amber-100 px-2.5 py-0.5 text-[11px] font-mono font-semibold text-amber-300 dark:text-amber-300 light:text-amber-950 shadow-sm shadow-amber-500/5"
                     >
-                      <svg width="12" height="12" className="h-3 w-3 shrink-0 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                      <svg width="12" height="12" className="h-3 w-3 shrink-0 text-amber-400 dark:text-amber-400 light:text-amber-700" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
                       {c}
@@ -222,7 +227,7 @@ export default function HomePage() {
                   </a>
                   <a
                     href="#contact"
-                    className="inline-flex items-center gap-2 rounded-lg border border-red-500/40 bg-red-500/15 px-5 py-2.5 text-sm font-semibold text-red-300 transition-all hover:bg-red-500/25 hover:border-red-400"
+                    className="inline-flex items-center gap-2 rounded-lg border border-red-500/40 light:border-red-400 bg-red-500/15 light:bg-red-100 px-5 py-2.5 text-sm font-semibold text-red-300 dark:text-red-300 light:text-red-700 transition-all hover:bg-red-500/25 light:hover:bg-red-200 hover:border-red-400"
                   >
                     <svg width="16" height="16" className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
@@ -247,8 +252,8 @@ export default function HomePage() {
             {/* Photo — right */}
             <div className="anim-fade-up delay-2 order-1 flex justify-center lg:order-2 lg:justify-end lg:pt-1.5">
               <div className="relative">
-                <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-white/40 via-transparent to-white/10" />
-                <div className="relative w-56 overflow-hidden rounded-2xl bg-slate-900 border border-white/30 shadow-2xl shadow-white/10 sm:w-64 lg:w-72">
+                <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-white/40 via-transparent to-white/10 dark:opacity-100 light:opacity-0 pointer-events-none transition-opacity duration-300" />
+                <div className="relative w-56 overflow-hidden rounded-2xl bg-slate-900 border border-white/30 dark:border-white/30 light:border-transparent light:border-0 shadow-2xl shadow-white/10 dark:shadow-white/10 light:shadow-none sm:w-64 lg:w-72">
                   <Image
                     src="/profile.jpg"
                     alt="Tioluwani Bakare"
@@ -258,7 +263,7 @@ export default function HomePage() {
                     priority
                   />
                 </div>
-                <div className="absolute -inset-6 -z-10 rounded-3xl bg-white/10 blur-2xl" />
+                <div className="absolute -inset-6 -z-10 rounded-3xl bg-white/10 dark:bg-white/10 light:bg-black/40 light:shadow-[0_0_60px_rgba(0,0,0,0.4)] blur-2xl transition-all duration-300" />
               </div>
             </div>
 
@@ -426,7 +431,7 @@ export default function HomePage() {
                               href={maisonProject.liveUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 rounded-xl border border-emerald-500/40 bg-emerald-500/15 px-5 py-3 text-xs sm:text-sm font-semibold text-emerald-300 transition-all hover:bg-emerald-500/25 hover:border-emerald-400"
+                              className="inline-flex items-center gap-2 rounded-xl border border-emerald-500/40 light:border-emerald-400 bg-emerald-500/15 light:bg-emerald-100 px-5 py-3 text-xs sm:text-sm font-semibold text-emerald-300 dark:text-emerald-300 light:text-emerald-800 transition-all hover:bg-emerald-500/25 light:hover:bg-emerald-200 hover:border-emerald-400"
                             >
                               <span>Visit Live Site</span>
                               <svg width="14" height="14" className="h-3.5 w-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -439,13 +444,13 @@ export default function HomePage() {
                     </div>
 
                     {/* Footer signal */}
-                    <div className="mt-6 pt-3.5 border-t border-slate-800/60 flex items-center justify-between gap-2 sm:gap-3 flex-nowrap overflow-hidden">
-                      <span className="font-mono text-[10px] text-slate-500 select-none min-w-0 truncate pr-1">
+                    <div className="mt-6 pt-3.5 border-t border-slate-800/60 dark:border-slate-800/60 light:border-slate-200 flex items-center justify-between gap-2 sm:gap-3 flex-nowrap overflow-hidden">
+                      <span className="font-mono text-[10px] text-slate-500 dark:text-slate-500 light:text-slate-600 select-none min-w-0 truncate pr-1">
                         $ cat docs/maison-darlington.json
                       </span>
                       <Link
                         href={`/case-studies/${maisonProject.slug}`}
-                        className="font-mono text-[10.5px] sm:text-[11px] font-bold text-red-400 inline-flex items-center gap-1 sm:gap-1.5 transition-all duration-300 group-hover:translate-x-1 group-hover:text-red-300 shrink-0 whitespace-nowrap"
+                        className="font-mono text-[10.5px] sm:text-[11px] font-bold text-red-400 dark:text-red-400 light:text-red-600 inline-flex items-center gap-1 sm:gap-1.5 transition-all duration-300 group-hover:translate-x-1 group-hover:text-red-300 light:group-hover:text-red-700 shrink-0 whitespace-nowrap"
                       >
                         [ GET CASE_STUDY ]
                         <svg width="12" height="12" className="h-3 w-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -657,7 +662,7 @@ export default function HomePage() {
         </footer>
 
         {/* Diagnostics Status Bar (Systems Developer vibe) */}
-        <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-white/[0.1] dark:border-white/[0.1] light:border-slate-300 bg-[#262a33]/95 dark:bg-[#262a33]/95 light:bg-white/95 backdrop-blur-md px-4 sm:px-6 py-2.5 text-[10px] sm:text-xs font-mono font-medium text-slate-300 dark:text-slate-300 light:text-slate-800 flex flex-wrap justify-between items-center gap-2 select-none shadow-2xl">
+        <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-white/[0.1] dark:border-white/[0.1] light:border-slate-300 bg-[#161a22]/95 dark:bg-[#161a22]/95 light:bg-white/95 backdrop-blur-md px-4 sm:px-6 py-2.5 text-[10px] sm:text-xs font-mono font-medium text-slate-300 dark:text-slate-300 light:text-slate-800 flex flex-wrap justify-between items-center gap-2 select-none shadow-2xl">
           <div className="flex items-center gap-2 sm:gap-4 truncate">
             <span className="flex items-center gap-1.5 text-emerald-400 dark:text-emerald-400 light:text-emerald-600 font-semibold tracking-wider shrink-0">
               SYSTEM_OK
