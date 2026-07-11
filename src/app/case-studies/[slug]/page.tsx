@@ -68,7 +68,7 @@ export default function CaseStudyPage({
         {/* Back */}
         <Link
           href="/#work"
-          className="mb-10 inline-flex items-center gap-2 text-sm font-mono font-medium text-slate-300 hover:text-red-400 transition-colors"
+          className="mb-10 inline-flex items-center gap-2 text-sm font-mono font-medium text-slate-300 dark:text-slate-300 light:text-slate-700 hover:text-red-400 light:hover:text-red-600 transition-colors"
         >
           <svg
             width="16"
@@ -90,33 +90,33 @@ export default function CaseStudyPage({
             <span
               className={`rounded-full border px-3 py-0.5 text-xs font-semibold tracking-wide ${
                 cs.status === "Live"
-                  ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-400 shadow-sm shadow-emerald-500/10"
+                  ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-400 dark:text-emerald-400 light:text-emerald-700 shadow-sm shadow-emerald-500/10"
                   : cs.status === "MVP"
-                  ? "border-purple-500/40 bg-purple-500/15 text-purple-300 shadow-sm shadow-purple-500/10"
-                  : "border-slate-700 bg-slate-800/80 text-slate-300"
+                  ? "border-purple-500/40 bg-purple-500/15 text-purple-300 dark:text-purple-300 light:text-purple-700 shadow-sm shadow-purple-500/10"
+                  : "border-slate-700 dark:border-slate-700 light:border-slate-300 bg-slate-800/80 dark:bg-slate-800/80 light:bg-slate-100 text-slate-300 dark:text-slate-300 light:text-slate-800"
               }`}
             >
               {cs.status}
             </span>
           </div>
-          <h1 className="mb-4 text-4xl font-bold text-white sm:text-5xl tracking-tight">
+          <h1 className="mb-4 text-4xl font-bold text-white dark:text-white light:text-slate-900 sm:text-5xl tracking-tight">
             {cs.title}
           </h1>
-          <p className="text-lg text-slate-300 font-sans leading-relaxed">{cs.tagline}</p>
+          <p className="text-lg text-slate-300 dark:text-slate-300 light:text-slate-700 font-sans leading-relaxed">{cs.tagline}</p>
         </div>
 
         {/* Content */}
-        <div className="space-y-10 divide-y divide-slate-800/80">
+        <div className="space-y-10 divide-y divide-slate-800/80 dark:divide-white/[0.08] light:divide-slate-200">
           <Section label="Problem">
-            <p className="text-slate-200 text-base sm:text-lg leading-relaxed font-sans">{cs.problem}</p>
+            <p className="text-slate-200 dark:text-slate-200 light:text-slate-700 text-base sm:text-lg leading-relaxed font-sans">{cs.problem}</p>
           </Section>
 
           <Section label="Solution">
-            <p className="text-slate-200 text-base sm:text-lg leading-relaxed font-sans">{cs.solution}</p>
+            <p className="text-slate-200 dark:text-slate-200 light:text-slate-700 text-base sm:text-lg leading-relaxed font-sans">{cs.solution}</p>
           </Section>
 
           <Section label="Outcome">
-            <p className="text-slate-200 text-base sm:text-lg leading-relaxed font-sans">{cs.outcome}</p>
+            <p className="text-slate-200 dark:text-slate-200 light:text-slate-700 text-base sm:text-lg leading-relaxed font-sans">{cs.outcome}</p>
           </Section>
 
           <Section label="Tech stack">
@@ -124,7 +124,7 @@ export default function CaseStudyPage({
               {cs.stack.map((tech) => (
                 <span
                   key={tech}
-                  className="rounded border border-slate-700/80 bg-slate-900/80 px-3 py-1.5 text-xs text-slate-200 shadow-sm"
+                  className="rounded border border-slate-700/80 dark:border-white/[0.1] light:border-slate-300 bg-slate-900/80 dark:bg-slate-900/80 light:bg-slate-100 px-3 py-1.5 text-xs text-slate-200 dark:text-slate-200 light:text-slate-800 shadow-sm"
                 >
                   {tech}
                 </span>
@@ -164,7 +164,7 @@ export default function CaseStudyPage({
                   href={cs.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-800/80 px-4 py-2.5 text-xs font-semibold text-slate-200 hover:border-red-500/50 hover:bg-slate-800 hover:text-white transition-all"
+                  className="inline-flex items-center gap-2 rounded-lg border border-slate-700 dark:border-slate-700 light:border-slate-300 bg-slate-800/80 dark:bg-slate-800/80 light:bg-slate-100 px-4 py-2.5 text-xs font-semibold text-slate-200 dark:text-slate-200 light:text-slate-800 hover:border-red-500/50 hover:bg-slate-800 hover:text-white transition-all"
                 >
                   <svg
                     width="14"
@@ -181,7 +181,7 @@ export default function CaseStudyPage({
               {cs.availableOnRequest && (
                 <a
                   href="mailto:bakaretioluwani@yahoo.com?subject=Portfolio request — work samples"
-                  className="inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-800/80 px-4 py-2.5 text-xs font-semibold text-slate-200 hover:border-red-500/50 hover:bg-slate-800 hover:text-white transition-all"
+                  className="inline-flex items-center gap-2 rounded-lg border border-slate-700 dark:border-slate-700 light:border-slate-300 bg-slate-800/80 dark:bg-slate-800/80 light:bg-slate-100 px-4 py-2.5 text-xs font-semibold text-slate-200 dark:text-slate-200 light:text-slate-800 hover:border-red-500/50 hover:bg-slate-800 hover:text-white transition-all"
                 >
                   Available on request
                 </a>
@@ -191,30 +191,30 @@ export default function CaseStudyPage({
         </div>
 
         {/* Nav between case studies */}
-        <div className="mt-16 flex items-center justify-between border-t border-slate-800/80 pt-10 font-mono">
+        <div className="mt-16 flex items-center justify-between border-t border-slate-800/80 dark:border-white/[0.08] light:border-slate-200 pt-10 font-mono">
           <Link
             href="/#work"
-            className="text-sm font-medium text-slate-300 hover:text-red-400 transition-colors"
+            className="text-sm font-medium text-slate-300 dark:text-slate-300 light:text-slate-700 hover:text-red-400 light:hover:text-red-600 transition-colors"
           >
             ← All work
           </Link>
           <Link
             href="/#contact"
-            className="text-sm font-semibold text-red-500 hover:text-red-400 transition-colors"
+            className="text-sm font-semibold text-red-500 dark:text-red-500 light:text-red-600 hover:text-red-400 transition-colors"
           >
             Discuss a project →
           </Link>
         </div>
       </main>
 
-      <footer className="relative z-10 border-t border-slate-800/80 px-6 py-6 pb-16">
-        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 text-xs font-mono text-slate-400 pr-14 sm:pr-20">
+      <footer className="relative z-10 border-t border-slate-800/80 dark:border-white/[0.08] light:border-slate-300 px-6 py-6 pb-24">
+        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 text-xs font-mono text-slate-400 dark:text-slate-400 light:text-slate-600 pr-14 sm:pr-20">
           <span>© 2026 Bakare Tioluwani Boluwatife</span>
           <a
             href="https://github.com/boluthe"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white transition-colors"
+            className="hover:text-white dark:hover:text-white light:hover:text-slate-900 font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700 transition-colors"
           >
             Lagos, Nigeria
           </a>
@@ -233,7 +233,7 @@ function Section({
 }) {
   return (
     <div className="pt-10 first:pt-0">
-      <h2 className="mb-4 font-mono text-xs font-bold text-slate-400">
+      <h2 className="mb-4 font-mono text-xs font-bold text-slate-400 dark:text-slate-400 light:text-slate-600 uppercase">
         {label}
       </h2>
       {children}

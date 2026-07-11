@@ -11,10 +11,10 @@ export default function CaseStudyCard({ cs }: { cs: CaseStudy }) {
   return (
     <Link
       href={`/case-studies/${cs.slug}`}
-      className="group flex flex-col gap-4 rounded-xl border border-slate-800 bg-surface-subtle p-6 transition-all duration-300 hover:-translate-y-1 hover:border-slate-600 hover:bg-surface-muted/30 hover:shadow-xl hover:shadow-black/40"
+      className="group flex flex-col gap-4 rounded-xl border border-slate-800 dark:border-white/[0.08] bg-[#1e222b]/80 dark:bg-[#1e222b]/80 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-slate-600 hover:bg-[#242832]/90 hover:shadow-xl hover:shadow-black/40"
     >
       <div className="flex items-start justify-between gap-4">
-        <h3 className="text-lg font-semibold text-white group-hover:text-accent transition-colors">
+        <h3 className="text-lg font-semibold text-white dark:text-white group-hover:text-red-400 transition-colors">
           {cs.title}
         </h3>
         <span
@@ -24,19 +24,19 @@ export default function CaseStudyCard({ cs }: { cs: CaseStudy }) {
         </span>
       </div>
 
-      <p className="text-sm text-slate-400 leading-relaxed">{cs.tagline}</p>
+      <p className="text-sm text-slate-400 dark:text-slate-300 leading-relaxed">{cs.tagline}</p>
 
       <div className="flex flex-wrap gap-2 mt-auto pt-2">
         {cs.stack.slice(0, 4).map((tech) => (
           <span
             key={tech}
-            className="rounded-md bg-slate-800 px-2.5 py-1 text-xs text-slate-300"
+            className="rounded-md bg-slate-800 dark:bg-slate-900 border border-slate-700/80 px-2.5 py-1 text-xs text-slate-300"
           >
             {tech}
           </span>
         ))}
         {cs.stack.length > 4 && (
-          <span className="rounded-md bg-slate-800 px-2.5 py-1 text-xs text-slate-500">
+          <span className="rounded-md bg-slate-800 dark:bg-slate-900 border border-slate-700/80 px-2.5 py-1 text-xs text-slate-500">
             +{cs.stack.length - 4} more
           </span>
         )}
