@@ -28,19 +28,19 @@ const skills = [
 
 const categoryAccents: Record<string, { badge: string }> = {
   "Languages": {
-    badge: "border-amber-500/35 bg-amber-500/[0.06] text-amber-300 dark:text-amber-300 light:text-amber-950 light:bg-amber-100 light:border-amber-400 hover:border-amber-400 hover:bg-amber-500/15 light:hover:bg-amber-200 font-semibold",
+    badge: "border-slate-700/60 bg-slate-800/40 text-slate-200 dark:text-slate-200 light:text-slate-800 light:bg-slate-100 light:border-slate-300 hover:border-emerald-500/50 hover:text-emerald-300 dark:hover:text-emerald-300 light:hover:border-emerald-500 font-semibold transition-all",
   },
   "Frameworks & UI": {
-    badge: "border-emerald-500/35 bg-emerald-500/[0.06] text-emerald-300 dark:text-emerald-300 light:text-emerald-950 light:bg-emerald-100 light:border-emerald-400 hover:border-emerald-400 hover:bg-emerald-500/15 light:hover:bg-emerald-200 font-semibold",
+    badge: "border-slate-700/60 bg-slate-800/40 text-slate-200 dark:text-slate-200 light:text-slate-800 light:bg-slate-100 light:border-slate-300 hover:border-emerald-500/50 hover:text-emerald-300 dark:hover:text-emerald-300 light:hover:border-emerald-500 font-semibold transition-all",
   },
   "Databases": {
-    badge: "border-sky-500/35 bg-sky-500/[0.06] text-sky-300 dark:text-sky-300 light:text-sky-950 light:bg-sky-100 light:border-sky-400 hover:border-sky-400 hover:bg-sky-500/15 light:hover:bg-sky-200 font-semibold",
+    badge: "border-slate-700/60 bg-slate-800/40 text-slate-200 dark:text-slate-200 light:text-slate-800 light:bg-slate-100 light:border-slate-300 hover:border-emerald-500/50 hover:text-emerald-300 dark:hover:text-emerald-300 light:hover:border-emerald-500 font-semibold transition-all",
   },
   "DevOps & Observability": {
-    badge: "border-purple-500/35 bg-purple-500/[0.06] text-purple-300 dark:text-purple-300 light:text-purple-950 light:bg-purple-100 light:border-purple-400 hover:border-purple-400 hover:bg-purple-500/15 light:hover:bg-purple-200 font-semibold",
+    badge: "border-slate-700/60 bg-slate-800/40 text-slate-200 dark:text-slate-200 light:text-slate-800 light:bg-slate-100 light:border-slate-300 hover:border-emerald-500/50 hover:text-emerald-300 dark:hover:text-emerald-300 light:hover:border-emerald-500 font-semibold transition-all",
   },
   "AI & Automation": {
-    badge: "border-rose-500/35 bg-rose-500/[0.06] text-rose-300 dark:text-rose-300 light:text-rose-950 light:bg-rose-100 light:border-rose-400 hover:border-rose-400 hover:bg-rose-500/15 light:hover:bg-rose-200 font-semibold",
+    badge: "border-slate-700/60 bg-slate-800/40 text-slate-200 dark:text-slate-200 light:text-slate-800 light:bg-slate-100 light:border-slate-300 hover:border-emerald-500/50 hover:text-emerald-300 dark:hover:text-emerald-300 light:hover:border-emerald-500 font-semibold transition-all",
   },
 };
 
@@ -91,7 +91,7 @@ function StandardCaseStudyCard({ cs }: { cs: CaseStudy }) {
         {/* Readable System Dashboard Content */}
         <div className="space-y-4 font-mono text-xs text-slate-300 dark:text-slate-300 light:text-slate-700 flex-1">
           <div>
-            <h3 className="text-lg sm:text-xl font-bold text-white dark:text-white light:text-slate-900 tracking-tight group-hover:text-red-400 dark:group-hover:text-red-400 light:group-hover:text-red-600 transition-colors">
+            <h3 className="text-lg sm:text-xl font-bold text-white dark:text-white light:text-slate-900 tracking-tight group-hover:text-emerald-400 dark:group-hover:text-emerald-400 light:group-hover:text-emerald-600 transition-colors">
               {cs.title}
             </h3>
             <p className="mt-1.5 text-slate-300 dark:text-slate-300 light:text-slate-700 font-sans text-xs sm:text-[13.5px] leading-relaxed font-normal">
@@ -135,7 +135,7 @@ function StandardCaseStudyCard({ cs }: { cs: CaseStudy }) {
           <span className="font-mono text-[10px] text-slate-500 dark:text-slate-500 light:text-slate-600 select-none min-w-0 truncate pr-1">
             $ cat docs/{cs.slug}.json
           </span>
-          <span className="font-mono text-[10.5px] sm:text-[11px] font-bold text-red-400 dark:text-red-400 light:text-red-600 inline-flex items-center gap-1 sm:gap-1.5 transition-all duration-300 group-hover:translate-x-1 group-hover:text-red-300 shrink-0 whitespace-nowrap">
+          <span className="font-mono text-[10.5px] sm:text-[11px] font-bold text-emerald-400 dark:text-emerald-400 light:text-emerald-600 inline-flex items-center gap-1 sm:gap-1.5 transition-all duration-300 group-hover:translate-x-1 group-hover:text-emerald-300 shrink-0 whitespace-nowrap">
             [ GET CASE_STUDY ]
             <svg width="12" height="12" className="h-3 w-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -227,7 +227,7 @@ export default function HomePage() {
                   </a>
                   <a
                     href="#contact"
-                    className="inline-flex items-center gap-2 rounded-lg border border-red-500/40 light:border-red-400 bg-red-500/15 light:bg-red-100 px-5 py-2.5 text-sm font-semibold text-red-300 dark:text-red-300 light:text-red-700 transition-all hover:bg-red-500/25 light:hover:bg-red-200 hover:border-red-400"
+                    className="inline-flex items-center gap-2 rounded-lg border border-emerald-500/40 light:border-emerald-400 bg-emerald-500/15 light:bg-emerald-100 px-5 py-2.5 text-sm font-semibold text-emerald-300 dark:text-emerald-300 light:text-emerald-800 transition-all hover:bg-emerald-500/25 light:hover:bg-emerald-200 hover:border-emerald-400"
                   >
                     <svg width="16" height="16" className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
@@ -373,7 +373,7 @@ export default function HomePage() {
                         {/* Title and Tagline + Problem/Solution summary */}
                         <div className="lg:col-span-7 space-y-4">
                           <div>
-                            <h3 className="text-2xl sm:text-3xl font-bold text-white dark:text-white light:text-slate-900 tracking-tight group-hover:text-red-400 dark:group-hover:text-red-400 light:group-hover:text-red-600 transition-colors">
+                            <h3 className="text-2xl sm:text-3xl font-bold text-white dark:text-white light:text-slate-900 tracking-tight group-hover:text-emerald-400 dark:group-hover:text-emerald-400 light:group-hover:text-emerald-600 transition-colors">
                               {maisonProject.title}
                             </h3>
                             <p className="mt-2 text-slate-300 dark:text-slate-300 light:text-slate-700 font-sans text-sm sm:text-[15px] leading-relaxed font-normal">
@@ -408,7 +408,7 @@ export default function HomePage() {
                               {maisonProject.stack.map((tech) => (
                                 <span
                                   key={tech}
-                                  className="rounded-md border border-slate-700/80 dark:border-slate-700/80 light:border-slate-300 bg-zinc-900/90 dark:bg-zinc-900/90 light:bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-200 dark:text-slate-200 light:text-slate-800 transition-all hover:border-red-500/60 hover:bg-slate-800 light:hover:bg-slate-200 hover:text-white light:hover:text-slate-950 shadow-sm"
+                                  className="rounded-md border border-slate-700/80 dark:border-slate-700/80 light:border-slate-300 bg-zinc-900/90 dark:bg-zinc-900/90 light:bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-200 dark:text-slate-200 light:text-slate-800 transition-all hover:border-emerald-500/60 hover:bg-slate-800 light:hover:bg-slate-200 hover:text-white light:hover:text-slate-950 shadow-sm"
                                 >
                                   {tech}
                                 </span>
@@ -450,7 +450,7 @@ export default function HomePage() {
                       </span>
                       <Link
                         href={`/case-studies/${maisonProject.slug}`}
-                        className="font-mono text-[10.5px] sm:text-[11px] font-bold text-red-400 dark:text-red-400 light:text-red-600 inline-flex items-center gap-1 sm:gap-1.5 transition-all duration-300 group-hover:translate-x-1 group-hover:text-red-300 light:group-hover:text-red-700 shrink-0 whitespace-nowrap"
+                        className="font-mono text-[10.5px] sm:text-[11px] font-bold text-emerald-400 dark:text-emerald-400 light:text-emerald-600 inline-flex items-center gap-1 sm:gap-1.5 transition-all duration-300 group-hover:translate-x-1 group-hover:text-emerald-300 light:group-hover:text-emerald-700 shrink-0 whitespace-nowrap"
                       >
                         [ GET CASE_STUDY ]
                         <svg width="12" height="12" className="h-3 w-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -670,7 +670,7 @@ export default function HomePage() {
           </div>
           <div className="flex items-center gap-3 shrink-0 ml-auto">
             <span className="hidden xs:inline text-slate-400 dark:text-slate-400 light:text-slate-600">PING: 8ms</span>
-            <span className="text-red-500 font-bold">PORT: 8080</span>
+            <span className="text-emerald-500 font-bold">PORT: 8080</span>
           </div>
         </div>
       </div>

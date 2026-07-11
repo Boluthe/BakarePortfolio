@@ -70,7 +70,7 @@ export default function CaseStudyPage({
         {/* Back */}
         <Link
           href="/#work"
-          className="mb-10 inline-flex items-center gap-2 text-sm font-mono font-medium text-slate-300 dark:text-slate-300 light:text-slate-700 hover:text-red-400 light:hover:text-red-600 transition-colors"
+          className="mb-10 inline-flex items-center gap-2 text-sm font-mono font-medium text-slate-300 dark:text-slate-300 light:text-slate-700 hover:text-emerald-400 light:hover:text-emerald-600 transition-colors"
         >
           <svg
             width="16"
@@ -196,13 +196,13 @@ export default function CaseStudyPage({
         <div className="mt-16 flex items-center justify-between border-t border-slate-800/80 dark:border-white/[0.08] light:border-slate-200 pt-10 font-mono">
           <Link
             href="/#work"
-            className="text-sm font-medium text-slate-300 dark:text-slate-300 light:text-slate-700 hover:text-red-400 light:hover:text-red-600 transition-colors"
+            className="text-sm font-medium text-slate-300 dark:text-slate-300 light:text-slate-700 hover:text-emerald-400 light:hover:text-emerald-600 transition-colors"
           >
             ← All work
           </Link>
           <Link
             href="/#contact"
-            className="text-sm font-semibold text-red-500 dark:text-red-500 light:text-red-600 hover:text-red-400 transition-colors"
+            className="text-sm font-semibold text-emerald-400 dark:text-emerald-400 light:text-emerald-600 hover:text-emerald-300 transition-colors"
           >
             Discuss a project →
           </Link>

@@ -14,7 +14,7 @@ export default function CaseStudyCard({ cs }: { cs: CaseStudy }) {
       className="group flex flex-col gap-4 rounded-xl border border-slate-800 dark:border-white/[0.08] light:border-slate-300 bg-[#1e222b]/80 dark:bg-[#1e222b]/80 light:bg-white/95 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-slate-600 light:hover:border-slate-400 hover:bg-[#242832]/90 light:hover:bg-white hover:shadow-xl hover:shadow-black/40 light:hover:shadow-slate-300/60 shadow-sm"
     >
       <div className="flex items-start justify-between gap-4">
-        <h3 className="text-lg font-semibold text-white dark:text-white light:text-slate-900 group-hover:text-red-400 transition-colors">
+        <h3 className="text-lg font-semibold text-white dark:text-white light:text-slate-900 group-hover:text-emerald-400 transition-colors">
           {cs.title}
         </h3>
         <span
@@ -42,7 +42,7 @@ export default function CaseStudyCard({ cs }: { cs: CaseStudy }) {
         )}
       </div>
 
-      <div className="flex items-center gap-1.5 text-xs text-red-400 dark:text-red-400 light:text-red-600 font-mono font-semibold">
+      <div className="flex items-center gap-1.5 text-xs text-emerald-400 dark:text-emerald-400 light:text-emerald-600 font-mono font-semibold">
         <span>Read case study</span>
         <svg
           className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1"

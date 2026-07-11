@@ -38,7 +38,7 @@ html.light body {
 }
 
 ::selection {
-  background-color: #ef4444;
+  background-color: #10b981;
   color: #ffffff;
 }
 
@@ -96,40 +96,6 @@ html.light .bg-mesh-lines {
   background-image: 
     linear-gradient(to right, rgba(15, 23, 42, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 1px, transparent 1px);
-}
-
-@keyframes colorCycleDot {
-  0%, 100% {
-    background-color: #ef4444;
-    box-shadow: 0 0 10px rgba(239, 68, 68, 0.85);
-  }
-  25% {
-    background-color: #10b981;
-    box-shadow: 0 0 10px rgba(16, 185, 129, 0.85);
-  }
-  50% {
-    background-color: #3b82f6;
-    box-shadow: 0 0 10px rgba(59, 130, 246, 0.85);
-  }
-  75% {
-    background-color: #f59e0b;
-    box-shadow: 0 0 10px rgba(245, 158, 11, 0.85);
-  }
-}
-
-@keyframes colorCycleText {
-  0%, 100% { color: #ef4444; border-color: rgba(239, 68, 68, 0.4); }
-  25% { color: #10b981; border-color: rgba(16, 185, 129, 0.4); }
-  50% { color: #3b82f6; border-color: rgba(59, 130, 246, 0.4); }
-  75% { color: #f59e0b; border-color: rgba(245, 158, 11, 0.4); }
-}
-
-.animate-color-cycle {
-  animation: colorCycleDot 6s infinite cubic-bezier(0.4, 0, 0.6, 1) !important;
-}
-
-.animate-color-cycle-text {
-  animation: colorCycleText 6s infinite cubic-bezier(0.4, 0, 0.6, 1) !important;
 }
 
 
