@@ -79,9 +79,9 @@ export default function Nav() {
           <button
             onClick={handleCopyEmail}
             aria-label="Copy email address"
-            className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 dark:border-white/[0.12] bg-slate-100/90 dark:bg-[#1e222b]/90 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-200 shadow-sm transition-all hover:border-emerald-500 hover:bg-emerald-500/10 hover:text-emerald-600 dark:hover:text-emerald-400 active:scale-95 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-none"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 dark:border-slate-600 light:border-slate-400 bg-slate-200/80 dark:bg-slate-800/90 light:bg-slate-100 px-3.5 py-1.5 text-xs font-bold text-slate-900 dark:text-white light:text-slate-900 shadow-sm transition-all hover:border-emerald-500 hover:bg-emerald-500/15 hover:text-emerald-600 dark:hover:text-emerald-300 active:scale-95 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-none"
           >
-            <svg width="13" height="13" className="shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg width="13" height="13" className="shrink-0 text-emerald-500 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
             <span>Copy Email</span>
@@ -91,18 +91,18 @@ export default function Nav() {
           <button
             onClick={toggleTheme}
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-            className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 dark:border-white/[0.12] bg-slate-100/90 dark:bg-[#1e222b]/90 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-200 shadow-sm transition-all hover:border-emerald-500 hover:bg-emerald-500/10 hover:text-emerald-600 dark:hover:text-emerald-400 active:scale-95 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-none"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 dark:border-slate-600 light:border-slate-400 bg-slate-200/80 dark:bg-slate-800/90 light:bg-slate-100 px-3.5 py-1.5 text-xs font-bold text-slate-900 dark:text-white light:text-slate-900 shadow-sm transition-all hover:border-emerald-500 hover:bg-emerald-500/15 hover:text-emerald-600 dark:hover:text-emerald-300 active:scale-95 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-none"
           >
             {theme === "dark" ? (
               <>
-                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} className="text-emerald-400">
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} className="text-emerald-400 shrink-0">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
                 <span>Light</span>
               </>
             ) : (
               <>
-                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} className="text-emerald-600 dark:text-emerald-400">
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} className="text-emerald-600 dark:text-emerald-400 shrink-0">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                 </svg>
                 <span>Dark</span>
@@ -117,14 +117,14 @@ export default function Nav() {
           <button
             onClick={toggleTheme}
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-300 dark:border-white/[0.1] text-slate-700 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-none"
+            className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-300 dark:border-slate-600 light:border-slate-400 bg-slate-200/80 dark:bg-slate-800/90 light:bg-slate-100 text-slate-900 dark:text-white light:text-slate-900 hover:border-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-300 transition-all focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-none shadow-sm"
           >
             {theme === "dark" ? (
-              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} className="text-emerald-400">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} className="text-emerald-400">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
               </svg>
             ) : (
-              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} className="text-emerald-600 dark:text-emerald-400">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} className="text-emerald-600 dark:text-emerald-400">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
               </svg>
             )}

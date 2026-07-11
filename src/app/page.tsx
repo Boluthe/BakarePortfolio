@@ -55,9 +55,12 @@ const certs = [
 const endpoints: Record<string, { method: "GET" | "POST" | "PUT"; route: string }> = {
   "maison-darlington": { method: "GET", route: "/api/v1/brand/menu" },
   "invoice-agent": { method: "POST", route: "/api/v1/invoice/escalate" },
+  "iroko-ai": { method: "POST", route: "/api/v1/compliance/audit" },
+  "fmcg-pos": { method: "PUT", route: "/api/v1/pos/sync-offline" },
   "cmr-system": { method: "GET", route: "/api/v1/bank/reporting" },
-  "inventory-management": { method: "PUT", route: "/api/v1/stock/reconcile" },
   "rencash": { method: "POST", route: "/api/v1/loans/apply" },
+  "inventory-management": { method: "PUT", route: "/api/v1/stock/reconcile" },
+  "permit-ai": { method: "POST", route: "/api/v1/permits/verify" },
 };
 
 const methodColors = {
@@ -66,21 +69,21 @@ const methodColors = {
   PUT: "text-amber-300 dark:text-amber-300 light:text-amber-900 bg-amber-500/15 light:bg-amber-100 border-amber-500/30 light:border-amber-300 font-semibold",
 } as const;
 
-function StandardCaseStudyCard({ cs }: { cs: CaseStudy }) {
+function StandardCaseStudyCard({ cs, className = "" }: { cs: CaseStudy; className?: string }) {
   return (
-    <RevealSection className="h-full">
+    <RevealSection className={`h-full ${className}`}>
       <Link
         href={`/case-studies/${cs.slug}`}
-        className="group relative block rounded-2xl border border-white/[0.08] dark:border-white/[0.08] light:border-slate-300 bg-[#1e222b]/80 dark:bg-[#1e222b]/80 light:bg-white/95 backdrop-blur-md p-6 sm:p-7 shadow-lg shadow-black/30 light:shadow-slate-300/60 transition-all duration-300 hover:-translate-y-1 hover:border-red-500/50 hover:bg-[#242832]/90 light:hover:bg-slate-50 hover:shadow-2xl hover:shadow-[0_0_35px_-5px_rgba(239,68,68,0.2)] overflow-hidden flex flex-col justify-between h-full"
+        className="group relative block rounded-2xl border border-white/[0.08] dark:border-white/[0.08] light:border-slate-300 bg-[#1e222b]/80 dark:bg-[#1e222b]/80 light:bg-white/95 backdrop-blur-md p-5 sm:p-6 shadow-lg shadow-black/30 light:shadow-slate-300/60 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/60 hover:bg-[#242832]/90 light:hover:bg-slate-50 hover:shadow-2xl hover:shadow-[0_0_35px_-5px_rgba(16,185,129,0.18)] overflow-hidden flex flex-col justify-between h-full"
       >
         {/* Top status bar representing endpoint metadata */}
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 dark:border-slate-800 light:border-slate-200 pb-3.5 mb-4 font-mono text-[10px] sm:text-xs">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 dark:border-slate-800 light:border-slate-200 pb-3 mb-3.5 font-mono text-[10px] sm:text-xs">
           <div className="flex items-center gap-2 min-w-0">
             <span className={`rounded px-1.5 py-0.5 font-bold border tracking-wider text-[9px] shrink-0 ${methodColors[endpoints[cs.slug]?.method || "GET"]}`}>
               {endpoints[cs.slug]?.method || "GET"}
             </span>
             <span className="text-slate-200 dark:text-slate-200 light:text-slate-800 font-semibold select-all truncate">
-              {endpoints[cs.slug]?.route}
+              {endpoints[cs.slug]?.route || `/api/v1/system/${cs.slug}`}
             </span>
           </div>
           <span className={`rounded-full border px-2.5 py-0.5 text-[10px] font-medium tracking-wide shrink-0 ${statusColors[cs.status]}`}>
@@ -89,31 +92,29 @@ function StandardCaseStudyCard({ cs }: { cs: CaseStudy }) {
         </div>
 
         {/* Readable System Dashboard Content */}
-        <div className="space-y-4 font-mono text-xs text-slate-300 dark:text-slate-300 light:text-slate-700 flex-1">
+        <div className="space-y-3 font-mono text-xs text-slate-300 dark:text-slate-300 light:text-slate-700 flex-1">
           <div>
             <h3 className="text-lg sm:text-xl font-bold text-white dark:text-white light:text-slate-900 tracking-tight group-hover:text-emerald-400 dark:group-hover:text-emerald-400 light:group-hover:text-emerald-600 transition-colors">
               {cs.title}
             </h3>
-            <p className="mt-1.5 text-slate-300 dark:text-slate-300 light:text-slate-700 font-sans text-xs sm:text-[13.5px] leading-relaxed font-normal">
+            <p className="mt-1 text-slate-300 dark:text-slate-300 light:text-slate-700 font-sans text-xs sm:text-[13px] leading-relaxed font-normal line-clamp-2">
               {cs.tagline}
             </p>
           </div>
 
-          <div className="space-y-2.5 pt-2.5 border-t border-slate-800/60 dark:border-slate-800/60 light:border-slate-200">
-            <div className="grid grid-cols-1 sm:grid-cols-[100px_1fr] gap-1 sm:gap-2 items-baseline">
-              <span className="text-emerald-400 dark:text-emerald-400 light:text-emerald-700 font-bold select-none">[ CHALLENGE ]</span>
-              <span className="text-slate-200 dark:text-slate-200 light:text-slate-800 font-sans text-xs leading-relaxed line-clamp-3">{cs.problem}</span>
+          <div className="space-y-2 pt-2.5 border-t border-slate-800/60 dark:border-slate-800/60 light:border-slate-200">
+            <div className="grid grid-cols-1 sm:grid-cols-[90px_1fr] gap-1 sm:gap-2 items-baseline">
+              <span className="text-emerald-400 dark:text-emerald-400 light:text-emerald-700 font-bold select-none text-[11px]">[ PROBLEM ]</span>
+              <span className="text-slate-200 dark:text-slate-200 light:text-slate-800 font-sans text-xs leading-relaxed line-clamp-2">{cs.problem}</span>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-[100px_1fr] gap-1 sm:gap-2 items-baseline">
-              <span className="text-emerald-400 dark:text-emerald-400 light:text-emerald-700 font-bold select-none">[ PLATFORM ]</span>
-              <span className="text-slate-200 dark:text-slate-200 light:text-slate-800 font-sans text-xs font-medium">
-                {cs.status === "Live" ? "Production System (Live)" : "Minimum Viable Product (MVP)"}
-              </span>
+            <div className="grid grid-cols-1 sm:grid-cols-[90px_1fr] gap-1 sm:gap-2 items-baseline">
+              <span className="text-emerald-400 dark:text-emerald-400 light:text-emerald-700 font-bold select-none text-[11px]">[ OUTCOME ]</span>
+              <span className="text-slate-200 dark:text-slate-200 light:text-slate-800 font-sans text-xs leading-relaxed line-clamp-2">{cs.outcome}</span>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-[100px_1fr] gap-1 sm:gap-2 items-baseline">
-              <span className="text-emerald-400 dark:text-emerald-400 light:text-emerald-700 font-bold select-none">[ ENGINE ]</span>
+            <div className="grid grid-cols-1 sm:grid-cols-[90px_1fr] gap-1 sm:gap-2 items-baseline pt-1">
+              <span className="text-emerald-400 dark:text-emerald-400 light:text-emerald-700 font-bold select-none text-[11px]">[ STACK ]</span>
               <div className="flex flex-wrap gap-1.5">
                 {cs.stack.slice(0, 4).map((tech) => (
                   <span key={tech} className="rounded bg-zinc-800/80 dark:bg-zinc-800/80 light:bg-slate-100 border border-slate-700/80 dark:border-slate-700/80 light:border-slate-300 px-2 py-0.5 text-[10px] text-slate-200 dark:text-slate-200 light:text-slate-800">
@@ -131,7 +132,7 @@ function StandardCaseStudyCard({ cs }: { cs: CaseStudy }) {
         </div>
 
         {/* Restrained GET details footer (frontend craft signal) */}
-        <div className="mt-5 pt-3.5 border-t border-slate-800/60 dark:border-slate-800/60 light:border-slate-200 flex items-center justify-between gap-2 sm:gap-3 flex-nowrap overflow-hidden">
+        <div className="mt-4 pt-3 border-t border-slate-800/60 dark:border-slate-800/60 light:border-slate-200 flex items-center justify-between gap-2 sm:gap-3 flex-nowrap overflow-hidden">
           <span className="font-mono text-[10px] text-slate-500 dark:text-slate-500 light:text-slate-600 select-none min-w-0 truncate pr-1">
             $ cat docs/{cs.slug}.json
           </span>
@@ -150,11 +151,13 @@ function StandardCaseStudyCard({ cs }: { cs: CaseStudy }) {
 export default function HomePage() {
   const [booting, setBooting] = useState(true);
   const [activeFilter, setActiveFilter] = useState<"All" | "Enterprise & Banking" | "AI & Automation" | "Consumer & SaaS">("All");
-  const invoiceProject = caseStudies.find((cs) => cs.slug === "invoice-agent");
-  const crmProject = caseStudies.find((cs) => cs.slug === "cmr-system");
-  const maisonProject = caseStudies.find((cs) => cs.slug === "maison-darlington");
-  const inventoryProject = caseStudies.find((cs) => cs.slug === "inventory-management");
-  const rencashProject = caseStudies.find((cs) => cs.slug === "rencash");
+  const [showAllProjects, setShowAllProjects] = useState(false);
+
+  const filteredStudies = activeFilter === "All"
+    ? caseStudies
+    : caseStudies.filter((cs) => cs.category === activeFilter);
+
+  const visibleStudies = showAllProjects ? filteredStudies : filteredStudies.slice(0, 3);
 
   return (
     <>
@@ -188,12 +191,14 @@ export default function HomePage() {
               </p>
 
               <p className="anim-fade-up delay-4 mt-6 max-w-md text-[15px] leading-relaxed text-slate-200 dark:text-slate-200 light:text-slate-700 font-sans">
-                I am a full stack software developer with hands-on experience building end-to-end web applications,
-                production-grade REST-APIs, internal banking systems, and AI-assisted operational platforms. My experience spans from frontend application development,
-                backend architecture, workflow automation, authentication systems, and also to scalable business operations tooling using Java, React, Spring Boot,
-                PostgreSQL, and modern web technologies. My projects include receivables management systems, AI-assisted escalation workflows, webhook-driven automation, async task processing,
-                and operational dashboards designed around real business operations. I also have experience contributing to live banking infrastructure at Union Bank of Nigeria,
-                with exposure to CI/CD pipelines, containerization, monitoring systems, and infrastructure tooling. 
+                        Backend engineer specializing in production systems, fintech, and operations automation. 
+                          I build full-stack applications when the problem demands it.....but my strength is backend 
+                          architecture: designing APIs, async workflows, AI integration, and systems that scale.
+                          I've shipped receivables platforms with AI-assisted escalation, compliance systems under 
+                          deadline, live banking infrastructure at Union Bank, and custom integrations for retail 
+                          operations. I work with Java, Spring Boot, React, PostgreSQL, and modern DevOps tooling 
+                          (Jenkins, Docker, Terraform, monitoring). Most importantly: I solve problems, not just 
+                          write code.
               </p>
 
               {/* Stats + certifications */}
@@ -239,10 +244,10 @@ export default function HomePage() {
                   href="/cv.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-xs text-slate-400 underline underline-offset-4 decoration-slate-600 hover:text-white hover:decoration-emerald-500 transition-all"
+                  className="inline-flex items-center gap-1.5 font-mono text-xs font-bold text-slate-300 dark:text-slate-300 light:text-slate-900 underline underline-offset-4 decoration-slate-500 light:decoration-slate-400 hover:text-emerald-400 light:hover:text-emerald-600 transition-all"
                 >
                   Download CV
-                  <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <svg className="h-3.5 w-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                   </svg>
                 </a>
@@ -322,12 +327,15 @@ export default function HomePage() {
             {/* Domain Filter Pills */}
             <div className="flex flex-wrap items-center gap-2 mt-4 mb-2 font-mono text-xs">
               {(["All", "Enterprise & Banking", "AI & Automation", "Consumer & SaaS"] as const).map((filter) => {
-                const count = filter === "All" ? 5 : filter === "Enterprise & Banking" ? 2 : filter === "AI & Automation" ? 1 : 2;
+                const count = filter === "All" ? caseStudies.length : caseStudies.filter((c) => c.category === filter).length;
                 const isActive = activeFilter === filter;
                 return (
                   <button
                     key={filter}
-                    onClick={() => setActiveFilter(filter)}
+                    onClick={() => {
+                      setActiveFilter(filter);
+                      setShowAllProjects(false);
+                    }}
                     className={`rounded-xl px-3.5 py-1.5 font-semibold transition-all duration-200 focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:outline-none ${
                       isActive
                         ? "bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20 scale-105"
@@ -340,132 +348,31 @@ export default function HomePage() {
               })}
             </div>
 
-            {/* Unified 2-Column Grid with Horizontal Maison Darlington Card */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch mt-3 sm:mt-6">
-              {/* Row 1: Invoice Agent & CMR System */}
-              {(activeFilter === "All" || activeFilter === "AI & Automation") && invoiceProject && <StandardCaseStudyCard cs={invoiceProject} />}
-              {(activeFilter === "All" || activeFilter === "Enterprise & Banking") && crmProject && <StandardCaseStudyCard cs={crmProject} />}
-
-              {/* Row 2: Maison Darlington (Horizontal Full-Width Card across both columns — Writing ONLY, No Preview) */}
-              {(activeFilter === "All" || activeFilter === "Consumer & SaaS") && maisonProject && (
-                <RevealSection className="col-span-1 md:col-span-2 h-full">
-                  <div className="group relative rounded-2xl border border-white/[0.08] dark:border-white/[0.08] light:border-slate-300 bg-[#1e222b]/90 dark:bg-[#1e222b]/90 light:bg-white/95 backdrop-blur-xl shadow-2xl light:shadow-slate-300/60 transition-all duration-500 hover:border-red-500/50 hover:bg-[#242832]/95 light:hover:bg-slate-50 hover:shadow-[0_0_40px_-10px_rgba(239,68,68,0.2)] overflow-hidden p-6 sm:p-8 font-mono flex flex-col justify-between h-full">
-                    <div>
-                      {/* Top Status Bar */}
-                      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 dark:border-slate-800 light:border-slate-200 pb-4 mb-5 text-xs">
-                        <div className="flex items-center gap-2.5 min-w-0">
-                          <span className={`rounded px-2 py-0.5 font-bold border tracking-wider text-[10px] shrink-0 ${methodColors[endpoints[maisonProject.slug]?.method || "GET"]}`}>
-                            {endpoints[maisonProject.slug]?.method || "GET"}
-                          </span>
-                          <span className="text-slate-200 dark:text-slate-200 light:text-slate-800 font-semibold select-all truncate text-xs sm:text-sm">
-                            {endpoints[maisonProject.slug]?.route || "/api/v1/brand/menu"}
-                          </span>
-                          <span className="hidden sm:inline text-slate-600 dark:text-slate-600 light:text-slate-400">|</span>
-                          <span className="hidden sm:inline text-slate-400 dark:text-slate-400 light:text-slate-600 font-normal text-xs">FEATURED_PRODUCTION_SYSTEM</span>
-                        </div>
-                        <span className={`rounded-full border px-3 py-0.5 text-xs font-bold tracking-wide shrink-0 ${statusColors[maisonProject.status]}`}>
-                          LIVE ON PROD
-                        </span>
-                      </div>
-
-                      {/* Horizontal Writing Content */}
-                      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
-                        {/* Title and Tagline + Problem/Solution summary */}
-                        <div className="lg:col-span-7 space-y-4">
-                          <div>
-                            <h3 className="text-2xl sm:text-3xl font-bold text-white dark:text-white light:text-slate-900 tracking-tight group-hover:text-emerald-400 dark:group-hover:text-emerald-400 light:group-hover:text-emerald-600 transition-colors">
-                              {maisonProject.title}
-                            </h3>
-                            <p className="mt-2 text-slate-300 dark:text-slate-300 light:text-slate-700 font-sans text-sm sm:text-[15px] leading-relaxed font-normal">
-                              {maisonProject.tagline}
-                            </p>
-                          </div>
-
-                          <div className="space-y-3 pt-3 border-t border-slate-800/80 dark:border-slate-800/80 light:border-slate-200 text-xs text-slate-300 dark:text-slate-300 light:text-slate-700">
-                            <div className="flex flex-col gap-1">
-                              <span className="text-emerald-400 dark:text-emerald-400 light:text-emerald-700 font-bold tracking-wider select-none text-xs">[ CHALLENGE & SCOPE ]</span>
-                              <p className="text-slate-300 dark:text-slate-300 light:text-slate-700 font-sans text-xs sm:text-[13.5px] leading-relaxed">
-                                {maisonProject.problem}
-                              </p>
-                            </div>
-
-                            <div className="flex flex-col gap-1 pt-1">
-                              <span className="text-emerald-400 dark:text-emerald-400 light:text-emerald-700 font-bold tracking-wider select-none text-xs">[ SOLUTION & PERFORMANCE ]</span>
-                              <p className="text-slate-300 dark:text-slate-300 light:text-slate-700 font-sans text-xs sm:text-[13.5px] leading-relaxed">
-                                {maisonProject.solution}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Right column of horizontal card: Architecture & Stack + Action Buttons */}
-                        <div className="lg:col-span-5 flex flex-col justify-between space-y-6 lg:border-l lg:border-slate-800/80 dark:lg:border-slate-800/80 light:lg:border-slate-200 lg:pl-8 h-full">
-                          <div>
-                            <span className="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 font-bold uppercase tracking-wider block mb-3">
-                              {"System Architecture & Stack"}
-                            </span>
-                            <div className="flex flex-wrap gap-2">
-                              {maisonProject.stack.map((tech) => (
-                                <span
-                                  key={tech}
-                                  className="rounded-md border border-slate-700/80 dark:border-slate-700/80 light:border-slate-300 bg-zinc-900/90 dark:bg-zinc-900/90 light:bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-200 dark:text-slate-200 light:text-slate-800 transition-all hover:border-emerald-500/60 hover:bg-slate-800 light:hover:bg-slate-200 hover:text-white light:hover:text-slate-950 shadow-sm"
-                                >
-                                  {tech}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-
-                          {/* Action CTAs */}
-                          <div className="pt-4 border-t border-slate-800/80 dark:border-slate-800/80 light:border-slate-200 flex flex-wrap items-center gap-3.5">
-                            <Link
-                              href={`/case-studies/${maisonProject.slug}`}
-                              className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 text-xs sm:text-sm font-semibold text-white transition-all hover:bg-emerald-700 hover:shadow-lg hover:shadow-emerald-600/30 ring-1 ring-emerald-500/50"
-                            >
-                              <span>View Case Study</span>
-                              <svg width="16" height="16" className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                              </svg>
-                            </Link>
-                            <a
-                              href={maisonProject.liveUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 rounded-xl border border-emerald-500/40 light:border-emerald-400 bg-emerald-500/15 light:bg-emerald-100 px-5 py-3 text-xs sm:text-sm font-semibold text-emerald-300 dark:text-emerald-300 light:text-emerald-800 transition-all hover:bg-emerald-500/25 light:hover:bg-emerald-200 hover:border-emerald-400"
-                            >
-                              <span>Visit Live Site</span>
-                              <svg width="14" height="14" className="h-3.5 w-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                              </svg>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Footer signal */}
-                    <div className="mt-6 pt-3.5 border-t border-slate-800/60 dark:border-slate-800/60 light:border-slate-200 flex items-center justify-between gap-2 sm:gap-3 flex-nowrap overflow-hidden">
-                      <span className="font-mono text-[10px] text-slate-500 dark:text-slate-500 light:text-slate-600 select-none min-w-0 truncate pr-1">
-                        $ cat docs/maison-darlington.json
-                      </span>
-                      <Link
-                        href={`/case-studies/${maisonProject.slug}`}
-                        className="font-mono text-[10.5px] sm:text-[11px] font-bold text-emerald-400 dark:text-emerald-400 light:text-emerald-600 inline-flex items-center gap-1 sm:gap-1.5 transition-all duration-300 group-hover:translate-x-1 group-hover:text-emerald-300 light:group-hover:text-emerald-700 shrink-0 whitespace-nowrap"
-                      >
-                        [ GET CASE_STUDY ]
-                        <svg width="12" height="12" className="h-3 w-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                        </svg>
-                      </Link>
-                    </div>
-                  </div>
-                </RevealSection>
-              )}
-
-              {/* Row 3: Inventory Management & RenCash */}
-              {(activeFilter === "All" || activeFilter === "Consumer & SaaS") && inventoryProject && <StandardCaseStudyCard cs={inventoryProject} />}
-              {(activeFilter === "All" || activeFilter === "Enterprise & Banking") && rencashProject && <StandardCaseStudyCard cs={rencashProject} />}
+            {/* Unified High-Density 2-Column Grid showing visible projects */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 items-stretch mt-4 sm:mt-6">
+              {visibleStudies.map((cs, idx) => {
+                const isThirdAndCollapsed = !showAllProjects && visibleStudies.length === 3 && idx === 2;
+                return (
+                  <StandardCaseStudyCard
+                    key={cs.slug}
+                    cs={cs}
+                    className={isThirdAndCollapsed ? "md:col-span-2" : ""}
+                  />
+                );
+              })}
             </div>
+
+            {/* Simple See More / Show Less Button */}
+            {filteredStudies.length > 3 && (
+              <div className="mt-8 flex justify-center">
+                <button
+                  onClick={() => setShowAllProjects(!showAllProjects)}
+                  className="rounded-xl border border-slate-700/80 dark:border-white/[0.12] light:border-slate-300 bg-[#1e222b]/80 dark:bg-[#1e222b]/80 light:bg-white px-6 py-2.5 text-xs sm:text-sm font-medium text-slate-300 dark:text-slate-300 light:text-slate-700 hover:border-emerald-500/60 hover:text-emerald-400 light:hover:text-emerald-600 transition-all duration-200"
+                >
+                  {showAllProjects ? "Show less" : "See more"}
+                </button>
+              </div>
+            )}
           </div>
         </section>
 
@@ -654,10 +561,10 @@ export default function HomePage() {
           </div>
         </section>
 
-        <footer className="border-t border-slate-800/80 dark:border-slate-800/80 light:border-slate-300 px-6 pt-6 pb-24 sm:py-8 sm:pb-28">
-          <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 text-xs font-mono text-slate-400 dark:text-slate-400 light:text-slate-600 pr-4">
-            <span>© 2026 Bakare Tioluwani Boluwatife</span>
-            <span className="font-semibold text-slate-300 dark:text-slate-300 light:text-slate-700">Lagos, Nigeria</span>
+        <footer className="border-t border-slate-800/80 dark:border-slate-800/80 light:border-slate-300 px-6 pt-6 pb-24 sm:py-8 sm:pb-28 bg-[#0d1117]/90 dark:bg-[#0d1117]/90 light:bg-slate-100/95 backdrop-blur-md transition-colors duration-300">
+          <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 text-xs font-mono text-slate-400 dark:text-slate-400 light:text-slate-800 pr-4">
+            <span className="font-semibold text-slate-400 dark:text-slate-400 light:text-slate-900">© 2026 Bakare Tioluwani Boluwatife</span>
+            <span className="font-bold text-slate-300 dark:text-slate-300 light:text-slate-800">Lagos, Nigeria</span>
           </div>
         </footer>
 

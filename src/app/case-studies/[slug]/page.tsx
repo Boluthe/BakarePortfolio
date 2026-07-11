@@ -121,6 +121,22 @@ export default function CaseStudyPage({
             <p className="text-slate-200 dark:text-slate-200 light:text-slate-700 text-[15px] sm:text-base leading-relaxed font-sans">{cs.outcome}</p>
           </Section>
 
+          {cs.role && (
+            <Section label="My Role">
+              <p className="text-slate-200 dark:text-slate-200 light:text-slate-700 text-[15px] sm:text-base leading-relaxed font-sans">{cs.role}</p>
+            </Section>
+          )}
+
+          {cs.learnings && cs.learnings.length > 0 && (
+            <Section label="Key Learnings">
+              <ul className="list-disc list-inside space-y-2 text-slate-200 dark:text-slate-200 light:text-slate-700 text-[15px] sm:text-base leading-relaxed font-sans">
+                {cs.learnings.map((learning, idx) => (
+                  <li key={idx}>{learning}</li>
+                ))}
+              </ul>
+            </Section>
+          )}
+
           <Section label="Tech stack">
             <div className="flex flex-wrap gap-2 font-mono">
               {cs.stack.map((tech) => (
@@ -166,7 +182,7 @@ export default function CaseStudyPage({
                   href={cs.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg border border-slate-700 dark:border-slate-700 light:border-slate-300 bg-slate-800/80 dark:bg-slate-800/80 light:bg-slate-100 px-4 py-2.5 text-xs font-semibold text-slate-200 dark:text-slate-200 light:text-slate-800 hover:border-red-500/50 hover:bg-slate-800 hover:text-white transition-all"
+                  className="inline-flex items-center gap-2 rounded-lg border border-slate-700 dark:border-slate-700 light:border-slate-300 bg-slate-800/80 dark:bg-slate-800/80 light:bg-slate-100 px-4 py-2.5 text-xs font-semibold text-slate-200 dark:text-slate-200 light:text-slate-800 hover:border-emerald-500/50 hover:bg-slate-800 hover:text-white transition-all"
                 >
                   <svg
                     width="14"
@@ -183,7 +199,7 @@ export default function CaseStudyPage({
               {cs.availableOnRequest && (
                 <a
                   href="mailto:bakaretioluwani@yahoo.com?subject=Portfolio request — work samples"
-                  className="inline-flex items-center gap-2 rounded-lg border border-slate-700 dark:border-slate-700 light:border-slate-300 bg-slate-800/80 dark:bg-slate-800/80 light:bg-slate-100 px-4 py-2.5 text-xs font-semibold text-slate-200 dark:text-slate-200 light:text-slate-800 hover:border-red-500/50 hover:bg-slate-800 hover:text-white transition-all"
+                  className="inline-flex items-center gap-2 rounded-lg border border-slate-700 dark:border-slate-700 light:border-slate-300 bg-slate-800/80 dark:bg-slate-800/80 light:bg-slate-100 px-4 py-2.5 text-xs font-semibold text-slate-200 dark:text-slate-200 light:text-slate-800 hover:border-emerald-500/50 hover:bg-slate-800 hover:text-white transition-all"
                 >
                   Available on request
                 </a>
