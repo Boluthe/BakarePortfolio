@@ -88,7 +88,7 @@ export default function CaseStudyPage({
 
         {/* Header */}
         <div className="mb-12">
-          <div className="mb-4 flex items-center gap-3 font-mono">
+          <div className="mb-4 flex flex-wrap items-center gap-2 font-mono">
             <span
               className={`rounded-full border px-3 py-0.5 text-xs font-semibold tracking-wide ${
                 cs.status === "Live"
@@ -100,6 +100,14 @@ export default function CaseStudyPage({
             >
               {cs.status}
             </span>
+            {(cs.categories || [cs.category]).map((cat) => (
+              <span
+                key={cat}
+                className="rounded border border-emerald-500/30 dark:border-emerald-500/30 light:border-emerald-300 bg-emerald-500/10 dark:bg-emerald-500/10 light:bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold text-emerald-400 dark:text-emerald-400 light:text-emerald-700"
+              >
+                {cat}
+              </span>
+            ))}
           </div>
           <h1 className="mb-4 text-4xl font-bold text-white dark:text-white light:text-slate-900 sm:text-5xl tracking-tight">
             {cs.title}
@@ -117,12 +125,51 @@ export default function CaseStudyPage({
             <p className="text-slate-200 dark:text-slate-200 light:text-slate-700 text-[15px] sm:text-base leading-relaxed font-sans">{cs.solution}</p>
           </Section>
 
-          <Section label="Outcome">
+          {cs.architectureBreakdown && cs.architectureBreakdown.length > 0 && (
+            <Section label="How It Was Built (Architecture & Implementation)">
+              <div className="space-y-4 pt-2">
+                {cs.architectureBreakdown.map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="rounded-xl border border-slate-800/80 dark:border-white/[0.08] light:border-slate-300 bg-[#1e222b]/70 dark:bg-[#1e222b]/70 light:bg-slate-50/80 p-5 shadow-sm transition-all hover:border-emerald-500/40"
+                  >
+                    <h3 className="font-mono text-xs sm:text-sm font-bold text-emerald-400 dark:text-emerald-400 light:text-emerald-700 mb-2 flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 dark:bg-emerald-400 light:bg-emerald-600 shrink-0" />
+                      {item.label}
+                    </h3>
+                    <p className="text-slate-200 dark:text-slate-200 light:text-slate-700 text-[14.5px] sm:text-[15px] leading-relaxed font-sans">
+                      {item.details}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </Section>
+          )}
+
+          {cs.evolution && cs.evolution.length > 0 && (
+            <Section label="How I Improved It Over Time (Evolution & Iteration)">
+              <div className="relative pl-6 space-y-6 before:absolute before:left-2 before:top-2.5 before:bottom-2.5 before:w-0.5 before:bg-gradient-to-b before:from-emerald-500 before:via-slate-700 before:to-transparent dark:before:from-emerald-500 dark:before:via-slate-700 light:before:from-emerald-600 light:before:via-slate-300 pt-2">
+                {cs.evolution.map((item, idx) => (
+                  <div key={idx} className="relative">
+                    <span className="absolute -left-6 top-1.5 h-3 w-3 rounded-full border-2 border-slate-900 bg-emerald-400 shadow-sm shadow-emerald-400/50" />
+                    <h3 className="font-mono text-xs sm:text-sm font-bold text-white dark:text-white light:text-slate-900 mb-1.5">
+                      [ {item.phase} ]
+                    </h3>
+                    <p className="text-slate-300 dark:text-slate-300 light:text-slate-700 text-[14.5px] sm:text-[15px] leading-relaxed font-sans">
+                      {item.details}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </Section>
+          )}
+
+          <Section label="Outcome & Business Impact">
             <p className="text-slate-200 dark:text-slate-200 light:text-slate-700 text-[15px] sm:text-base leading-relaxed font-sans">{cs.outcome}</p>
           </Section>
 
           {cs.role && (
-            <Section label="My Role">
+            <Section label="My Role & Execution">
               <p className="text-slate-200 dark:text-slate-200 light:text-slate-700 text-[15px] sm:text-base leading-relaxed font-sans">{cs.role}</p>
             </Section>
           )}

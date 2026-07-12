@@ -100,6 +100,16 @@ function StandardCaseStudyCard({ cs, className = "" }: { cs: CaseStudy; classNam
             <p className="mt-1 text-slate-300 dark:text-slate-300 light:text-slate-700 font-sans text-xs sm:text-[13px] leading-relaxed font-normal line-clamp-2">
               {cs.tagline}
             </p>
+            <div className="flex flex-wrap gap-1.5 mt-2.5 font-mono">
+              {(cs.categories || [cs.category]).map((cat) => (
+                <span
+                  key={cat}
+                  className="rounded border border-emerald-500/30 dark:border-emerald-500/30 light:border-emerald-300 bg-emerald-500/10 dark:bg-emerald-500/10 light:bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-400 dark:text-emerald-400 light:text-emerald-700"
+                >
+                  {cat}
+                </span>
+              ))}
+            </div>
           </div>
 
           <div className="space-y-2 pt-2.5 border-t border-slate-800/60 dark:border-slate-800/60 light:border-slate-200">
@@ -155,7 +165,7 @@ export default function HomePage() {
 
   const filteredStudies = activeFilter === "All"
     ? caseStudies
-    : caseStudies.filter((cs) => cs.category === activeFilter);
+    : caseStudies.filter((cs) => (cs.categories || [cs.category]).includes(activeFilter));
 
   const visibleStudies = showAllProjects ? filteredStudies : filteredStudies.slice(0, 3);
 
@@ -191,20 +201,15 @@ export default function HomePage() {
               </p>
 
               <p className="anim-fade-up delay-4 mt-6 max-w-md text-[15px] leading-relaxed text-slate-200 dark:text-slate-200 light:text-slate-700 font-sans">
-                        Backend engineer specializing in production systems, fintech, and operations automation. 
-                          I build full-stack applications when the problem demands it.....but my strength is backend 
-                          architecture: designing APIs, async workflows, AI integration, and systems that scale.
-                          I've shipped receivables platforms with AI-assisted escalation, compliance systems under 
-                          deadline, live banking infrastructure at Union Bank, and custom integrations for retail 
-                          operations. I work with Java, Spring Boot, React, PostgreSQL, and modern DevOps tooling 
-                          (Jenkins, Docker, Terraform, monitoring). Most importantly: I solve problems, not just 
-                          write code.
+                I'm a full stack engineer specializing in production systems, fintech, and operations automation. I design systems that work: RESTful APIs, async pipelines, AI integration, and infrastructure that scales.
+                I solve problems, not write code for its own sake. I've shipped receivables platforms with AI escalation, compliance systems under deadline, live banking infrastructure at Union Bank, and custom integrations that let non-technical users run their business.
+                What matters: production-quality work, deep business understanding, systems that last.
               </p>
 
               {/* Stats + certifications */}
               <div className="anim-fade-up delay-5 mt-6 space-y-3">
                 <p className="text-[11px] font-mono font-medium text-slate-400 dark:text-slate-400 light:text-slate-600">
-                  {"Over 10 projects shipped · 3+ yrs production experience"}
+                  {"Over 8 projects shipped · 3+ yrs production experience"}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {certs.map((c) => (
@@ -327,7 +332,7 @@ export default function HomePage() {
             {/* Domain Filter Pills */}
             <div className="flex flex-wrap items-center gap-2 mt-4 mb-2 font-mono text-xs">
               {(["All", "Enterprise & Banking", "AI & Automation", "Consumer & SaaS"] as const).map((filter) => {
-                const count = filter === "All" ? caseStudies.length : caseStudies.filter((c) => c.category === filter).length;
+                const count = filter === "All" ? caseStudies.length : caseStudies.filter((c) => (c.categories || [c.category]).includes(filter)).length;
                 const isActive = activeFilter === filter;
                 return (
                   <button
