@@ -1,25 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
   --font-inter: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+*, *::before, *::after, html, body {
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: #262a33;
+  background-color: #0d1117;
+}
+
+html.light {
+  background-color: #f8fafc;
 }
 
 body {
-  background-color: #262a33;
+  background-color: #0d1117;
   color: #f1f5f9;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+html.light body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
 ::selection {
-  background-color: #ef4444;
+  background-color: #10b981;
   color: #ffffff;
 }
 
@@ -50,11 +69,18 @@ body {
   transform: translateY(12px);
 }
 
-/* Systems Architecture Dot Grid & Mesh Backgrounds that flow with true Ash Grey */
+/* Systems Architecture Dot Grid & Mesh Backgrounds */
 .bg-dot-grid {
   background-image: 
     radial-gradient(circle at 50% 0%, rgba(239, 68, 68, 0.12) 0%, transparent 65%),
     radial-gradient(rgba(203, 213, 225, 0.18) 1.5px, transparent 1.5px);
+  background-size: 100% 100%, 32px 32px;
+}
+
+html.light .bg-dot-grid {
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.08) 0%, transparent 65%),
+    radial-gradient(rgba(100, 116, 139, 0.2) 1.5px, transparent 1.5px);
   background-size: 100% 100%, 32px 32px;
 }
 
@@ -63,6 +89,13 @@ body {
   background-image: 
     linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+html.light .bg-mesh-lines {
+  background-size: 80px 80px;
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 1px, transparent 1px);
 }
 
 

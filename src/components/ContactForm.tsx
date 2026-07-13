@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useToast } from "@/components/Toast";
 
 export default function ContactForm() {
   const [name, setName] = useState("");
@@ -8,6 +9,7 @@ export default function ContactForm() {
   const [subject, setSubject] = useState("Contract & Project Inquiry");
   const [message, setMessage] = useState("");
   const [sent, setSent] = useState(false);
+  const { showToast } = useToast();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,20 +22,21 @@ export default function ContactForm() {
     )}`;
 
     window.location.href = mailtoUrl;
+    showToast("Opening default mail client with pre-filled inquiry...", "success");
     setSent(true);
     setTimeout(() => setSent(false), 5000);
   };
 
   return (
-    <div className="h-full flex flex-col justify-between rounded-2xl border border-white/[0.08] bg-[#1e222b]/80 backdrop-blur-md p-6 sm:p-8 shadow-2xl shadow-black/30 font-mono">
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800/80 pb-4 mb-6">
+    <div className="h-full flex flex-col justify-between rounded-2xl border border-white/[0.08] dark:border-white/[0.08] light:border-slate-300 bg-[#1e222b]/80 dark:bg-[#1e222b]/80 light:bg-white/95 backdrop-blur-md p-6 sm:p-8 shadow-2xl shadow-black/30 light:shadow-slate-200 font-mono text-slate-200 dark:text-slate-200 light:text-slate-800">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800/80 dark:border-slate-800/80 light:border-slate-200 pb-4 mb-6">
         <div className="flex items-center gap-2.5">
-          <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
-          <h3 className="text-sm sm:text-base font-bold text-white tracking-wide">
+          <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-400 dark:bg-emerald-400 light:bg-emerald-600 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
+          <h3 className="text-sm sm:text-base font-bold text-white dark:text-white light:text-slate-900 tracking-wide">
             {"DIRECT_MESSAGE_DISPATCH — SEND INQUIRY OR QUESTION"}
           </h3>
         </div>
-        <span className="rounded border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-400">
+        <span className="rounded border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-400 dark:text-emerald-400 light:text-emerald-700">
           SECURE_CLIENT_MAILTO
         </span>
       </div>
@@ -41,7 +44,7 @@ export default function ContactForm() {
       <form onSubmit={handleSubmit} className="space-y-5 flex-1 flex flex-col justify-between">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <div>
-            <label htmlFor="name" className="block text-xs font-bold text-slate-300 mb-2">
+            <label htmlFor="name" className="block text-xs font-bold text-slate-300 dark:text-slate-300 light:text-slate-700 mb-2">
               Your Name *
             </label>
             <input
@@ -51,12 +54,12 @@ export default function ContactForm() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. Sarah Connor"
-              className="w-full rounded-xl border border-white/[0.08] bg-[#161a22]/90 px-4 py-3 text-xs sm:text-sm text-white placeholder-slate-500 outline-none transition-all focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/50"
+              className="w-full rounded-xl border border-white/[0.08] dark:border-white/[0.08] light:border-slate-300 bg-[#161a22]/90 dark:bg-[#161a22]/90 light:bg-slate-50 px-4 py-3 text-xs sm:text-sm text-white dark:text-white light:text-slate-900 placeholder-slate-500 light:placeholder-slate-400 outline-none transition-all focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/50"
             />
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-xs font-bold text-slate-300 mb-2">
+            <label htmlFor="email" className="block text-xs font-bold text-slate-300 dark:text-slate-300 light:text-slate-700 mb-2">
               Email Address *
             </label>
             <input
@@ -66,20 +69,20 @@ export default function ContactForm() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="e.g. sarah@cyberdyne.io"
-              className="w-full rounded-xl border border-white/[0.08] bg-[#161a22]/90 px-4 py-3 text-xs sm:text-sm text-white placeholder-slate-500 outline-none transition-all focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/50"
+              className="w-full rounded-xl border border-white/[0.08] dark:border-white/[0.08] light:border-slate-300 bg-[#161a22]/90 dark:bg-[#161a22]/90 light:bg-slate-50 px-4 py-3 text-xs sm:text-sm text-white dark:text-white light:text-slate-900 placeholder-slate-500 light:placeholder-slate-400 outline-none transition-all focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/50"
             />
           </div>
         </div>
 
         <div>
-          <label htmlFor="subject" className="block text-xs font-bold text-slate-300 mb-2">
+          <label htmlFor="subject" className="block text-xs font-bold text-slate-300 dark:text-slate-300 light:text-slate-700 mb-2">
             Inquiry Category
           </label>
           <select
             id="subject"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
-            className="w-full rounded-xl border border-white/[0.08] bg-[#161a22]/90 px-4 py-3 text-xs sm:text-sm text-white outline-none transition-all focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/50"
+            className="w-full rounded-xl border border-white/[0.08] dark:border-white/[0.08] light:border-slate-300 bg-[#161a22]/90 dark:bg-[#161a22]/90 light:bg-slate-50 px-4 py-3 text-xs sm:text-sm text-white dark:text-white light:text-slate-900 outline-none transition-all focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/50"
           >
             <option value="Contract & Project Inquiry">Contract & Project Inquiry</option>
             <option value="Full-Time Engineering Opportunity">Full-Time Engineering Opportunity</option>
@@ -90,10 +93,10 @@ export default function ContactForm() {
 
         <div>
           <div className="flex justify-between items-center mb-2">
-            <label htmlFor="message" className="block text-xs font-bold text-slate-300">
+            <label htmlFor="message" className="block text-xs font-bold text-slate-300 dark:text-slate-300 light:text-slate-700">
               Message / Question Details *
             </label>
-            <span className="text-[10px] text-slate-500">
+            <span className="text-[10px] text-slate-500 dark:text-slate-500 light:text-slate-600">
               {message.length} chars
             </span>
           </div>
@@ -104,12 +107,12 @@ export default function ContactForm() {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Tell me about your project, system requirements, or any architecture questions..."
-            className="w-full rounded-xl border border-white/[0.08] bg-[#161a22]/90 px-4 py-3 text-xs sm:text-sm text-white placeholder-slate-500 outline-none transition-all focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/50 resize-y min-h-[120px]"
+            className="w-full rounded-xl border border-white/[0.08] dark:border-white/[0.08] light:border-slate-300 bg-[#161a22]/90 dark:bg-[#161a22]/90 light:bg-slate-50 px-4 py-3 text-xs sm:text-sm text-white dark:text-white light:text-slate-900 placeholder-slate-500 light:placeholder-slate-400 outline-none transition-all focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/50 resize-y min-h-[120px]"
           />
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
-          <p className="text-[11px] text-slate-400 max-w-sm">
+          <p className="text-[11px] text-slate-400 dark:text-slate-400 light:text-slate-600 max-w-sm">
             * Clicking dispatch will open your email client pre-filled with this inquiry for immediate delivery.
           </p>
 

@@ -2,20 +2,16 @@
 
 import { useEffect, useState } from "react";
 
-// Drifting Telemetry & Code Particles scattered everywhere across the main viewport
+// Drifting Telemetry & Code Particles positioned along the left/right flanks to avoid overlapping central content
 const floatingTokens = [
-  { text: "{...}", top: "8%", left: "6%", delay: "0s", duration: "18s" },
-  { text: "PORT: 8080", top: "15%", left: "85%", delay: "2s", duration: "22s" },
-  { text: "</>", top: "28%", left: "12%", delay: "4s", duration: "20s" },
-  { text: "SYS_SYN", top: "35%", left: "78%", delay: "1s", duration: "24s" },
-  { text: "[0x7F]", top: "45%", left: "90%", delay: "3s", duration: "19s" },
-  { text: "PING: 2ms", top: "52%", left: "5%", delay: "5s", duration: "21s" },
-  { text: "SELECT * FROM core", top: "62%", left: "30%", delay: "2.5s", duration: "25s" },
-  { text: "POST /api/v1/auth", top: "18%", left: "50%", delay: "3.5s", duration: "23s" },
-  { text: "JWT_VERIFIED", top: "72%", left: "82%", delay: "1.5s", duration: "21s" },
-  { text: "CACHE_HIT: REDIS", top: "82%", left: "12%", delay: "4.5s", duration: "24s" },
-  { text: "ws://sync.stream", top: "88%", left: "55%", delay: "0.5s", duration: "22s" },
-  { text: "ORACLE_12C: OK", top: "93%", left: "80%", delay: "3s", duration: "26s" },
+  { text: '{ status: "live" }', top: "12%", left: "5%", delay: "0s", duration: "22s" },
+  { text: "PORT: 8080", top: "18%", left: "88%", delay: "2s", duration: "25s" },
+  { text: "</>", top: "32%", left: "7%", delay: "4s", duration: "21s" },
+  { text: "GET /api/v1/system", top: "42%", left: "82%", delay: "1s", duration: "26s" },
+  { text: "[0x7F_OK]", top: "56%", left: "6%", delay: "3s", duration: "23s" },
+  { text: "PING: 8ms", top: "66%", left: "86%", delay: "5s", duration: "24s" },
+  { text: "SELECT * FROM core", top: "78%", left: "10%", delay: "2.5s", duration: "27s" },
+  { text: "JWT_VERIFIED", top: "86%", left: "78%", delay: "1.5s", duration: "22s" },
 ];
 
 export default function CaseStudyBackground() {
@@ -29,11 +25,11 @@ export default function CaseStudyBackground() {
 
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden select-none">
-      {/* Drifting Telemetry & Code Particles ONLY */}
+      {/* Drifting Telemetry & Code Particles ONLY along outer flanks */}
       {floatingTokens.map((token, idx) => (
         <div
           key={idx}
-          className="absolute font-mono text-[11px] sm:text-xs font-bold tracking-wider text-slate-500/30 sm:text-slate-400/30 border border-slate-700/25 bg-slate-900/40 backdrop-blur-[2px] px-2.5 py-1 rounded-md shadow-sm transition-all duration-1000"
+          className="absolute font-mono text-[10px] sm:text-xs font-semibold tracking-wider text-slate-400/25 dark:text-slate-400/25 light:text-slate-600/60 border border-white/[0.04] dark:border-white/[0.04] light:border-slate-300/60 bg-[#161a22]/30 dark:bg-[#161a22]/30 light:bg-white/80 backdrop-blur-[2px] px-2.5 py-1 rounded-md shadow-sm transition-all duration-1000"
           style={{
             top: token.top,
             left: token.left,
@@ -44,20 +40,20 @@ export default function CaseStudyBackground() {
         </div>
       ))}
 
-      {/* CSS Keyframes for slow floating movement */}
+      {/* CSS Keyframes for slow, gentle floating movement */}
       <style jsx global>{`
         @keyframes float-particle {
           0% {
             transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
-            opacity: 0.25;
+            opacity: 0.2;
           }
           50% {
-            transform: translateY(-28px) translateX(18px) rotate(3deg) scale(1.05);
-            opacity: 0.45;
+            transform: translateY(-20px) translateX(12px) rotate(2deg) scale(1.03);
+            opacity: 0.35;
           }
           100% {
-            transform: translateY(18px) translateX(-18px) rotate(-3deg) scale(0.95);
-            opacity: 0.2;
+            transform: translateY(16px) translateX(-12px) rotate(-2deg) scale(0.97);
+            opacity: 0.15;
           }
         }
       `}</style>

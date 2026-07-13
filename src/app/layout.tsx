@@ -1,25 +1,28 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import BackToTop from "@/components/BackToTop";
 import StructuredData from "@/components/StructuredData";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
-import CaseStudyBackground from "@/components/CaseStudyBackground";
 import { Analytics } from "@vercel/analytics/next";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-});
+import { ThemeProvider } from "@/context/ThemeContext";
+import { ToastProvider } from "@/components/Toast";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.bakaretioluwani.tech";
+
+const themeInitScript = `
+  (function() {
+    try {
+      var stored = localStorage.getItem('portfolio_theme');
+      if (stored === 'light') {
+        document.documentElement.classList.add('light');
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      }
+    } catch (e) {}
+  })();
+`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -103,14 +106,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
-      <body className="min-h-screen text-slate-100 font-sans antialiased bg-[#0d1117] selection:bg-red-500 selection:text-white relative">
-        <StructuredData />
-        <GoogleAnalytics />
-        <Analytics />
-        <CaseStudyBackground />
-        {children}
-        <BackToTop />
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body className="min-h-screen text-slate-100 dark:text-slate-100 light:text-slate-900 font-sans antialiased selection:bg-red-500 selection:text-white relative">
+        <ThemeProvider>
+          <ToastProvider>
+            <StructuredData />
+            <GoogleAnalytics />
+            <Analytics />
+            {children}
+            <BackToTop />
+          </ToastProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
