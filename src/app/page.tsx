@@ -201,8 +201,8 @@ export default function HomePage() {
               </p>
 
               <p className="anim-fade-up delay-4 mt-6 max-w-md text-[15px] leading-relaxed text-slate-200 dark:text-slate-200 light:text-slate-700 font-sans">
-                I'm a full stack engineer specializing in production systems, fintech, and operations automation. I design systems that work: RESTful APIs, async pipelines, AI integration, and infrastructure that scales.
-                I solve problems, not write code for its own sake. I've shipped receivables platforms with AI escalation, compliance systems under deadline, live banking infrastructure at Union Bank, and custom integrations that let non-technical users run their business.
+                I&apos;m a full stack engineer specializing in production systems, fintech, and operations automation. I design systems that work: RESTful APIs, async pipelines, AI integration, and infrastructure that scales.
+                I solve problems, not write code for its own sake. I&apos;ve shipped receivables platforms with AI escalation, compliance systems under deadline, live banking infrastructure at Union Bank, and custom integrations that let non-technical users run their business.
                 What matters: production-quality work, deep business understanding, systems that last.
               </p>
 
